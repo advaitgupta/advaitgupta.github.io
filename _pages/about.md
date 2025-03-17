@@ -22,7 +22,7 @@ Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University o
 I am actively seeking internship opportunities for Summer 2025 to further advance these research interests. I am open to collaborating—if my research interests and work resonate with you, feel free to reach out to discuss potential opportunities!
 
 # 🔥 News
-- *2025.03*: We release [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) with the [Official Codebase](https://github.com/tianyi-lab/CoSTAR), [Live Demo](https://storage.googleapis.com/costa-frontend/index.html) and [benchmark dataset](https://huggingface.co/datasets/advaitgupta/CoSTAR). 
+- *2025.03*: We release [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) with the [Official Codebase](https://github.com/tianyi-lab/CoSTAR), [Live Demo](https://storage.googleapis.com/costa-frontend/index.html) and [Benchmark Dataset](https://huggingface.co/datasets/advaitgupta/CoSTAR). 
 - *2024.08*: Joined University of Maryland for an MS in Machine Learning. 
 - *2024.05*: Graduated with a Bachelor of Technology in Computer Science from RGIPT.
 - *2023.10*: ["From Above and Beyond: Decoding Urban Aesthetics with the Visual Pollution Index"](https://link.springer.com/chapter/10.1007/978-3-031-56388-1_8) accepted for oral presentation at SNPD-2023. It is also among the top papers to be acepted to published in Springer's Studies in Comutational Intelligence.
@@ -31,15 +31,16 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/costa.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/costa.png' alt="sym" width="10%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613))
+[CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613)
 
 **Advait Gupta**, NandaKiran Velaga, Dang Nguyen, Tianyi Zhou
 
 [**Project**](https://github.com/tianyi-lab/CoSTAR) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based reasoning with A* search for cost-efficient tool selection, balancing cost and quality. Unlike text-to-image models like Stable Diffusion and DALLE-3, which struggle with complex edits and retaining input image details, and agents like GenArtist, CLOVA, and VisProg, which perform poorly on multimodal, multi-step tasks, CoSTA* constructs an optimal toolpath using LLM-guided hierarchical planning and A* search. It dynamically adapts by refining tool effectiveness through real-time feedback from a VLM, ensuring robust and efficient execution.
+CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based reasoning with A* search for cost-efficient tool selection, balancing cost and quality. Unlike text-to-image models like Stable Diffusion and DALLE-3, which struggle with complex edits and retaining input image details, and agents like GenArtist, CLOVA, and VisProg, which perform poorly on multimodal, multi-step tasks, CoSTA* constructs an optimal toolpath using LLM-guided hierarchical planning and A* search. It dynamically adapts by refining tool effectiveness through real-time feedback from a VLM, ensuring robust and efficient execution.
+
 </div>
 </div>
 
@@ -64,9 +65,9 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
   - The Billboard Advertisement Recommendation System is a dynamic platform that selects ads based on real-time traffic and pedestrian demographics. Using computer vision, machine learning, and content-based filtering, it analyzes the audience to display relevant ads.
 
 # 🎖 Honors and Awards
-- *2023* Qualified for the Grand Finale of Smart India Hackathon 2023 organized by Government of India. 
-- *2022* Among 40 students selected nationwide for the ACM Winter School on Optimization for ML and Operations Research.
-- *2020* Ranked among top 2% students in the Joint Entrance Examination - India.
+- *2023*: Qualified for the Grand Finale of Smart India Hackathon 2023 organized by Government of India. 
+- *2022*: Among 40 students selected nationwide for the ACM Winter School on Optimization for ML and Operations Research.
+- *2020*: Ranked among top 2% students in the Joint Entrance Examination - India.
 
 # 📖 Educations
 - *2024.08 - 2026.05 (Expected)*, MS in Machine Learning, University of Maryland- College Park. 
