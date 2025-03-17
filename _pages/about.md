@@ -25,7 +25,7 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
 - *2025.03*: We release [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) with the [Official Codebase](https://github.com/tianyi-lab/CoSTAR), [Live Demo](https://storage.googleapis.com/costa-frontend/index.html) and [Benchmark Dataset](https://huggingface.co/datasets/advaitgupta/CoSTAR). 
 - *2024.08*: Joined University of Maryland for an MS in Machine Learning. 
 - *2024.05*: Graduated with a Bachelor of Technology in Computer Science from RGIPT.
-- *2023.10*: ["From Above and Beyond: Decoding Urban Aesthetics with the Visual Pollution Index"](https://link.springer.com/chapter/10.1007/978-3-031-56388-1_8) accepted for oral presentation at SNPD-2023. It is also among the top papers to be acepted to published in Springer's Studies in Comutational Intelligence.
+- *2023.10*: ["From Above and Beyond: Decoding Urban Aesthetics with the Visual Pollution Index"](https://link.springer.com/chapter/10.1007/978-3-031-56388-1_8) accepted for oral presentation at SNPD-2023. It is also among the top papers to be accepted for publishing in Springer's Studies in Computational Intelligence.
 - *2023.09*: ["From Sky to Strategy: Construction Activity Index and Stage Estimation From Drone-Captured Imagery"](https://ieeexplore.ieee.org/abstract/document/10459984) accepted for oral presentation at ICMLA 2023.
 
 
