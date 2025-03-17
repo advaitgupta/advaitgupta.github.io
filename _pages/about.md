@@ -31,7 +31,7 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
 
 # 📝 Publications 
 
-<div class="badge">Preprint
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">INCET 2023</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) [[**Project**](https://github.com/tianyi-lab/CoSTAR)<strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>]
