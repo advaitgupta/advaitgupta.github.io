@@ -31,7 +31,7 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div><img src='images/costa.png' alt="sym" width="10%"></div></div>
+<div class="badge">Preprint</div>
 <div class='paper-box-text' markdown="1">
 
 [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613)
@@ -41,7 +41,6 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
 [**Project**](https://github.com/tianyi-lab/CoSTAR) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
 CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based reasoning with A* search for cost-efficient tool selection, balancing cost and quality. Unlike text-to-image models like Stable Diffusion and DALLE-3, which struggle with complex edits and retaining input image details, and agents like GenArtist, CLOVA, and VisProg, which perform poorly on multimodal, multi-step tasks, CoSTA* constructs an optimal toolpath using LLM-guided hierarchical planning and A* search. It dynamically adapts by refining tool effectiveness through real-time feedback from a VLM, ensuring robust and efficient execution.
 
-</div>
 </div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">SNPD 2023</div><img src='images/costa.png' alt="sym" width="10%"></div></div>
