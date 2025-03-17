@@ -63,7 +63,7 @@ CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based re
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">INCET 2023</div></div></div>
 <div class='paper-box-text' markdown="1">
 
-- [Detection of pneumonia from chest X-ray images using transfer learning on deep CNN](https://ieeexplore.ieee.org/abstract/document/10170454), **Advait Gupta**, Manan Padsala, Pallabi Saikia, **INCET 2023**
+- [Detection of pneumonia from chest X-ray images using transfer learning on deep CNN](https://ieeexplore.ieee.org/abstract/document/10170454), **Advait Gupta**, Manan Padsala, Pallabi Saikia
 
 </div>
 </div>
