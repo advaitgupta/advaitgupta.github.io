@@ -45,7 +45,13 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
 
 - [From Above and Beyond: Decoding Urban Aesthetics with the Visual Pollution Index](https://link.springer.com/chapter/10.1007/978-3-031-56388-1_8), **Advait Gupta**, Manan Padsala, Devesh Jani, Tanmay Bisen, Aastha Shayla, Gargi Srivastava, **SNPD 2023**
 
+</div>
+</div>
+
 - [From Sky to Strategy: Construction Activity Index and Stage Estimation From Drone-Captured Imagery](https://ieeexplore.ieee.org/abstract/document/10459984), **Advait Gupta**, Manan Padsala, Aastha Shayla, Tanmay Bisen, Susham Biswas, Abhemanyu Sarin, **ICMLA 2023**
+
+</div>
+</div>
 
 - [Detection of pneumonia from chest X-ray images using transfer learning on deep CNN](https://ieeexplore.ieee.org/abstract/document/10170454), **Advait Gupta**, Manan Padsala, Pallabi Saikia, **INCET 2023**
 
