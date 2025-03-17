@@ -46,7 +46,9 @@ CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based re
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">SNPD 2023</div></div></div>
 <div class='paper-box-text' markdown="1">
 
-[From Above and Beyond: Decoding Urban Aesthetics with the Visual Pollution Index](https://link.springer.com/chapter/10.1007/978-3-031-56388-1_8), **Advait Gupta**, Manan Padsala, Devesh Jani, Tanmay Bisen, Aastha Shayla, Gargi Srivastava
+[From Above and Beyond: Decoding Urban Aesthetics with the Visual Pollution Index](https://link.springer.com/chapter/10.1007/978-3-031-56388-1_8) 
+
+**Advait Gupta**, Manan Padsala, Devesh Jani, Tanmay Bisen, Aastha Shayla, Gargi Srivastava
 
 </div>
 </div>
@@ -54,7 +56,9 @@ CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based re
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICMLA 2023</div></div></div>
 <div class='paper-box-text' markdown="1">
 
-[From Sky to Strategy: Construction Activity Index and Stage Estimation From Drone-Captured Imagery](https://ieeexplore.ieee.org/abstract/document/10459984), **Advait Gupta**, Manan Padsala, Aastha Shayla, Tanmay Bisen, Susham Biswas, Abhemanyu Sarin
+[From Sky to Strategy: Construction Activity Index and Stage Estimation From Drone-Captured Imagery](https://ieeexplore.ieee.org/abstract/document/10459984) 
+
+**Advait Gupta**, Manan Padsala, Aastha Shayla, Tanmay Bisen, Susham Biswas, Abhemanyu Sarin
 
 </div>
 </div>
@@ -62,7 +66,9 @@ CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based re
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">INCET 2023</div></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Detection of pneumonia from chest X-ray images using transfer learning on deep CNN](https://ieeexplore.ieee.org/abstract/document/10170454), **Advait Gupta**, Manan Padsala, Pallabi Saikia
+[Detection of pneumonia from chest X-ray images using transfer learning on deep CNN](https://ieeexplore.ieee.org/abstract/document/10170454) 
+
+**Advait Gupta**, Manan Padsala, Pallabi Saikia
 
 </div>
 </div>
