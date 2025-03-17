@@ -53,17 +53,17 @@
     .paper-box-image{
         justify-content: center;
         display: flex;
-        width: 100%;
+        width: 10%;
         order: 2;
         img {
-            max-width: 400px;
+            max-width: 40px;
             box-shadow: 3px 3px 6px #888;
             object-fit: cover;
         }
     }
     
     .paper-box-text{
-        max-width: 100%;
+        max-width: 10%;
         order: 1;
     }
     
