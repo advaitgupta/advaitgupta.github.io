@@ -22,11 +22,24 @@ Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University o
 I am actively seeking internship opportunities for Summer 2025 to further advance these research interests. I am open to collaborating—if my research interests and work resonate with you, feel free to reach out to discuss potential opportunities!
 
 # 🔥 News
+- *2025.06*: We release [FaSTA*: Fast-Slow Toolpath Agent with Subroutine Mining for Efficient Multi-turn Image Editing](https://arxiv.org/abs/2506.20911) with the [Official Codebase](https://github.com/tianyi-lab/FaSTAR). 
 - *2025.03*: We release [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) with the [Official Codebase](https://github.com/tianyi-lab/CoSTAR), [Live Demo](https://storage.googleapis.com/costa-frontend/index.html) and [Benchmark Dataset](https://huggingface.co/datasets/advaitgupta/CoSTAR). 
 - *2024.08*: Joined University of Maryland for an MS in Machine Learning. 
 - *2024.05*: Graduated with a Bachelor of Technology in Computer Science from RGIPT.
 
 # 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div></div></div>
+<div class='paper-box-text' markdown="1">
+
+[FaSTA*: Fast-Slow Toolpath Agent with Subroutine Mining for Efficient Multi-turn Image Editing](https://arxiv.org/abs/2506.20911) [[**Project**](https://github.com/tianyi-lab/FaSTAR)<strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>]
+
+**Advait Gupta**, Rishie Raj, Dang Nguyen, Tianyi Zhou
+
+FaSTA* is a neurosymbolic online learning, tool-use agent with fast-slow planning for complex multi-turn image editing tasks. It decomposes a task into subtasks and calls a sequence of AI tools to address each subtask. By learning a library of frequently used subroutines (subsequences of tools), it can rely on fast planning for most subtasks, and occasionally, lazily activate slow planning (which requires A* search) for rare and challenging subtasks that the learned library of subroutines cannot handle.
+
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div></div></div>
 <div class='paper-box-text' markdown="1">
