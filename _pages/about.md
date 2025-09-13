@@ -53,7 +53,7 @@ CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based re
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">SNPD 2023</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">SNPD 2023 (Oral)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [From Above and Beyond: Decoding Urban Aesthetics with the Visual Pollution Index](https://link.springer.com/chapter/10.1007/978-3-031-56388-1_8) 
@@ -65,7 +65,7 @@ It is among the top papers to be accepted for publishing in Springer's Studies i
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICMLA 2023</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICMLA 2023 (Oral)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [From Sky to Strategy: Construction Activity Index and Stage Estimation From Drone-Captured Imagery](https://ieeexplore.ieee.org/abstract/document/10459984) 
@@ -75,7 +75,7 @@ It is among the top papers to be accepted for publishing in Springer's Studies i
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">INCET 2023</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">INCET 2023 (Oral)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Detection of pneumonia from chest X-ray images using transfer learning on deep CNN](https://ieeexplore.ieee.org/abstract/document/10170454) 
@@ -86,6 +86,9 @@ It is among the top papers to be accepted for publishing in Springer's Studies i
 </div>
 
 # 🚀 Personal Projects
+- [AI Co-Pilot for Proactive Financial Regulatory Intelligence & Strategy](https://github.com/advaitgupta/Axiom-Prime) 📅 Present
+  - Building AI co-pilot providing automated **regulatory monitoring** (SEC, FINRA filings), legislative forecasting (XGBoost), and internal policy gap analysis; its multi-agent system (LangGraph, TinyLlama) reasons over a hybrid RAG knowledge core (pgvector, Neo4j) populated by a real-time Kafka/PySpark pipeline with OCR/Table extraction.
+  - Deploying it via a full MLOps pipeline (Jenkins, K8s, MLflow) to deliver risk-optimized strategic recommendations through a conversational UI chatbot (FastAPI, React) and ensure data privacy with Federated Learning (Flower).
  
 - [Emotion-Based Poem Generation with GPT-2](https://github.com/advaitgupta/Emotion-Based-Poem-Generation) 📅 2023.07
   - The Emotion-Based Poem Generation project fine-tunes GPT-2 to create poems that reflect user-specified emotions. Using a curated dataset labeled with emotions from the NRC Emotion Lexicon, the model generates text that aligns with both style and sentiment. By leveraging emotion prompts, it ensures the output resonates with the intended tone while allowing users to customize poem length.
@@ -103,7 +106,8 @@ It is among the top papers to be accepted for publishing in Springer's Studies i
 - *2020.12 - 2024.05*, Bachelor of Technology in Computer Science, Rajiv Gandhi Institute of Petroleum Technology. 
 
 # 💻 Internships
+- *2025.06 - 2024.08*, Machine Learning Intern, Delasoft Inc., New Castle, DE.
 - *2024.01 - 2024.03*, Machine Learning Intern, Techpeek, India.
-- *2023.08 - 2023.05*, Summer Intern, Ernst & Young, India.
+- *2023.05 - 2023.08*, Summer Intern, Ernst & Young, India.
 - *2023.01 - 2023.03*, Machine Learning Intern, Spritle Software, India.
 - *2022.06 - 2022.11*, Machine Learning Intern, AIEnsured (testAIng.com), India.
