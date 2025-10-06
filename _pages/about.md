@@ -17,9 +17,9 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University of Maryland, College Park, and am part of Prof. Tianyi Zhou's research lab. My research broadly encompasses machine learning with specific interests in computer vision, natural language processing, multimodal techniques, and generative AI. I am particularly passionate about building intelligent agents that leverage reasoning capabilities to effectively perform vision-related tasks and decision-making processes. Previously, I earned my B.Tech degree in Computer Science from Rajiv Gandhi Institute of Petroleum Technology where I researched on applying computer vision techniques in healthcare, construction and urban analytics. 
+Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University of Maryland, College Park, and am part of [Prof. Tianyi Zhou](https://tianyizhou.github.io)'s research lab. I also collaborate with [Prof. Zhuang Liu](https://liuzhuang13.github.io) at Princeton University and [Prof. Ruohan Gao](https://ruohangao.github.io) at the University of Maryland. I have a diverse range of research experience spanning neurosymbolic reasoning for agentic planning, multimodal visual understanding, emergent architectural properties of LLMs, and classical CV and genAI systems. My recent research focusses on cost-sensitive, adaptive agents by combining LLM-driven hierarchical planning with classical A* search and enabling them to learn by mining reusable tool sequences via in-context reinforcement learning and inductive reasoning. My work also extends to embodied agents and their evaluation for agentic visual understanding. Previously, I earned my B.Tech degree in Computer Science from Rajiv Gandhi Institute of Petroleum Technology where I researched on applying computer vision in healthcare, construction and urban analytics.
 
-I am actively seeking internship opportunities for Summer 2025 to further advance these research interests. I am open to collaborating—if my research interests and work resonate with you, feel free to reach out to discuss potential opportunities!
+I am applying to PhD programs for Fall 2026 admission and am always eager to connect with fellow researchers. If my work aligns with your interests, please feel free to reach out.
 
 # 🔥 News
 - *2025.06*: We release [FaSTA*: Fast-Slow Toolpath Agent with Subroutine Mining for Efficient Multi-turn Image Editing](https://arxiv.org/abs/2506.20911) with the [Official Codebase](https://github.com/tianyi-lab/FaSTAR). 
@@ -28,6 +28,18 @@ I am actively seeking internship opportunities for Summer 2025 to further advanc
 - *2024.05*: Graduated with a Bachelor of Technology in Computer Science from RGIPT.
 
 # 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft</div></div></div>
+<div class='paper-box-text' markdown="1">
+
+[AgentVQA: A Unified Benchmark for Agentic Visual Understanding](https://drive.google.com/file/d/1gT1MkXptga2njI7mVKMo42Q51bjuNink/view?usp=sharing) 
+
+**Advait Gupta**, Sachin Konan, Gabriel Sarch, Zhuang Liu
+
+AgentVQA is a unified benchmark for agentic visual understanding that systematically evaluates the agentic capabilities of Vision-Language Models (VLMs). It addresses the need for a comprehensive evaluation framework by unifying 14 challenging datasets across five critical domains: Web Agents, Robotics, Egocentric Videos, Games, and Spatial Understanding. To ensure standardized and scalable analysis, AgentVQA reformulates diverse and dynamic tasks, such as web navigation and gameplay, into a unified multiple-choice question (MCQ) format. The benchmark is designed to be challenging, featuring "hard negatives" that are generated through a VLM-assisted pipeline and manually reviewed to ensure they are plausible yet incorrect, thereby testing for fine-grained understanding.
+
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint</div></div></div>
 <div class='paper-box-text' markdown="1">
@@ -60,7 +72,7 @@ CoSTA* is a hybrid agent for multi-turn image editing that combines LLM-based re
 
 **Advait Gupta**, Manan Padsala, Devesh Jani, Tanmay Bisen, Aastha Shayla, Gargi Srivastava
 
-It is among the top papers to be accepted for publishing in Springer's Studies in Computational Intelligence.
+From Above and Beyond is a framework for quantifying and visualizing urban aesthetics by creating a "Visual Pollution Index" (VPI). The system leverages drone-captured imagery and a fine-tuned YOLOv6 model to detect and categorize a wide spectrum of visual pollutants, from graffiti and potholes to cluttered sidewalks. Its core contribution is the VPI, a metric that holistically assesses an area's aesthetic quality by multiplicatively combining the diversity of pollutants present (Counting Categories Ratio) with their perceived intensity (Severity-Weighted Score). This index is then used to generate intuitive, geospatial heatmaps, providing a data-driven and actionable tool for urban planners to identify and address areas of visual degradation. It is among the top papers to be accepted for publishing in Springer's Studies in Computational Intelligence.
 
 </div>
 </div>
@@ -71,6 +83,8 @@ It is among the top papers to be accepted for publishing in Springer's Studies i
 [From Sky to Strategy: Construction Activity Index and Stage Estimation From Drone-Captured Imagery](https://ieeexplore.ieee.org/abstract/document/10459984) 
 
 **Advait Gupta**, Manan Padsala, Aastha Shayla, Tanmay Bisen, Susham Biswas, Abhemanyu Sarin
+
+From Sky to Strategy introduces a framework for quantifying and visualizing construction site activity using drone-captured imagery. The system leverages a fine-tuned YOLOv6 model to accurately detect and classify various construction materials from a unique, high-resolution aerial dataset. Its core contribution is the Composite Construction Activity Index (CAI), a metric that provides a holistic view of site activity by multiplicatively combining the diversity of materials present (Material Diversity Ratio) with their spatial coverage (Percentage of Image Covered). The framework also maps detected materials to specific construction phases to estimate a project's lifecycle stage, and culminates in the generation of geospatial heatmaps to provide an intuitive, data-driven tool for stakeholders in construction monitoring and urban planning.
 
 </div>
 </div>
