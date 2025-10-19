@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentVQA Human Evaluation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #666;
+            background: #fafafa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .instructions-section {
+            padding: 40px;
+        }
+
+        .instructions-section h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .instructions-section h2 {
+            font-size: 24px;
+            color: #444;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .instructions-section p, .instructions-section li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .instructions-section ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .instructions-section .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 60px 30px;
+        }
+
+        .welcome-section h1 {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .reviewer-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .reviewer-form h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .media-container {
+            margin-bottom: 30px;
+            text-align: center;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .media-container img {
+            max-width: 100%;
+            max-height: 600px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .media-container video {
+            max-width: 100%;
+            max-height: 600px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .media-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .prompt-section {
+            margin-bottom: 25px;
+        }
+
+        .prompt-section h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .prompt-text {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+            line-height: 1.6;
+            color: #555;
+            white-space: pre-wrap;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .required {
+            color: #d32f2f;
+        }
+
+        .form-section input,
+        .form-section textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-section input:focus,
+        .form-section textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .form-section textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #45a049;
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .dataset-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #1565c0;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 60px 30px;
+        }
+
+        .success-message h2 {
+            color: #4CAF50;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .success-message p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar" id="progressBar" style="display: none;">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText" style="display: none;"></div>
+        
+        <div class="content" id="content">
+            <div class="welcome-section">
+                <h1>🤖 AgentVQA Human Evaluation</h1>
+                <p>Welcome! Thank you for participating in our evaluation study.<br>
+                Please enter your details below to get started.</p>
+                
+                <div class="reviewer-form">
+                    <h2>Reviewer Information</h2>
+                    <div class="form-section">
+                        <label for="reviewerName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="reviewerName" placeholder="Enter your full name" required>
+                        <div class="error-message" id="nameError">Please enter your name</div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <label for="reviewerEmail">Email Address <span class="required">*</span></label>
+                        <input type="email" id="reviewerEmail" placeholder="Enter your email address" required>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="showInstructionsPage()" style="width: 100%; margin-top: 20px;">
+                        Continue to Instructions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        const DATASET_CATEGORY = 'robotics';
+        const INCLUDE_EXPLANATION = true;
+        const TOTAL_SAMPLES = 500;
+        
+        const SAMPLES_PER_SPECIAL_DATASET = Math.floor(TOTAL_SAMPLES / 14);
+
+        // IndexedDB for progress saving
+        let db;
+        const DB_NAME = 'AgentVQAEvaluation';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'evaluationProgress';
+
+        async function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                
+                request.onerror = () => reject(request.error);
+                request.onsuccess = () => {
+                    db = request.result;
+                    resolve(db);
+                };
+                
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                    }
+                };
+            });
+        }
+
+        async function saveProgress() {
+            if (!db) return;
+            
+            const progress = {
+                id: 'current_session',
+                reviewerInfo,
+                dataset,
+                currentIndex,
+                responses,
+                lastUpdated: new Date().toISOString()
+            };
+            
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const store = transaction.objectStore(STORE_NAME);
+            store.put(progress);
+        }
+
+        async function loadProgress() {
+            if (!db) return null;
+            
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([STORE_NAME], 'readonly');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.get('current_session');
+                
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        async function clearProgress() {
+            if (!db) return;
+            
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const store = transaction.objectStore(STORE_NAME);
+            store.delete('current_session');
+        }
+
+        // Initialize DB on page load
+        initDB().then(() => {
+            console.log('IndexedDB initialized');
+        }).catch(err => {
+            console.error('Failed to initialize IndexedDB:', err);
+        });
+
+        const DATASET_CATEGORIES = {
+            games_part1: ['media_col_skonan/Atari_Multiple_Choice_1400'],
+            games_part2: ['media_col_advaitgupta/Game_QA', 'media_col_advaitgupta/embspatial-mcq-1000'],
+            web_agents: [
+                'media_col_advaitgupta/aitw-mcq',
+                'media_col_advaitgupta/MONDAY_MCQ', 
+                'media_col_advaitgupta/mind2web-mcq-dataset', 
+                'media_col_advaitgupta/screenspot-mcq', 
+                'media_col_advaitgupta/screenspot_pro-mcq'
+            ],
+            ego_video: [], // perception_test and vsi_mcq are loaded separately via fetchSeparateDataset
+            robotics: [
+                'media_col_advaitgupta/erqa-dataset',
+                'media_col_advaitgupta/roborefit-grasping',
+                'media_col_advaitgupta/robo2VLM'
+            ],
+            spatial_understanding: [
+                'media_col_advaitgupta/space-10'
+            ]
+        };
+
+        const ALL_MEDIA_COLUMNS = [
+            'media_col_advaitgupta/Game_QA',
+            'media_col_advaitgupta/MONDAY_MCQ',
+            'media_col_advaitgupta/aitw-mcq',
+            'media_col_advaitgupta/embspatial-mcq-1000',
+            'media_col_advaitgupta/erqa-dataset',
+            'media_col_advaitgupta/mind2web-mcq-dataset',
+            'media_col_advaitgupta/robo2VLM',
+            'media_col_advaitgupta/roborefit-grasping',
+            'media_col_advaitgupta/screenspot-mcq',
+            'media_col_advaitgupta/screenspot_pro-mcq',
+            'media_col_advaitgupta/space-10',
+            'media_col_skonan/Atari_Multiple_Choice_1400'
+        ];
+
+        function getMediaColumnsForCategory(category) {
+            if (category === 'all') {
+                return ALL_MEDIA_COLUMNS;
+            }
+            return DATASET_CATEGORIES[category] || ALL_MEDIA_COLUMNS;
+        }
+
+        const MEDIA_COLUMNS = getMediaColumnsForCategory(DATASET_CATEGORY);
+
+        let dataset = [];
+        let currentIndex = 0;
+        let responses = {};
+        let reviewerInfo = {};
+
+        // Check for saved progress on page load
+        window.addEventListener('DOMContentLoaded', async () => {
+            await initDB();
+            const savedProgress = await loadProgress();
+            
+            if (savedProgress && savedProgress.reviewerInfo && savedProgress.dataset.length > 0) {
+                const resume = confirm(`Welcome back, ${savedProgress.reviewerInfo.name}!\n\nYou have a saved evaluation in progress with ${savedProgress.dataset.length} samples.\nLast updated: ${new Date(savedProgress.lastUpdated).toLocaleString()}\n\nWould you like to resume where you left off?`);
+                
+                if (resume) {
+                    reviewerInfo = savedProgress.reviewerInfo;
+                    dataset = savedProgress.dataset;
+                    currentIndex = savedProgress.currentIndex;
+                    responses = savedProgress.responses;
+                    
+                    document.getElementById('progressBar').style.display = 'block';
+                    document.getElementById('progressText').style.display = 'block';
+                    
+                    renderSample();
+                } else {
+                    await clearProgress();
+                }
+            }
+        });
+
+        window.showInstructionsPage = function() {
+            const name = document.getElementById('reviewerName').value.trim();
+            const email = document.getElementById('reviewerEmail').value.trim();
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            
+            let isValid = true;
+            
+            if (!name) {
+                nameError.style.display = 'block';
+                document.getElementById('reviewerName').style.borderColor = '#d32f2f';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+                document.getElementById('reviewerName').style.borderColor = '#e0e0e0';
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                emailError.style.display = 'block';
+                document.getElementById('reviewerEmail').style.borderColor = '#d32f2f';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+                document.getElementById('reviewerEmail').style.borderColor = '#e0e0e0';
+            }
+            
+            if (isValid) {
+                reviewerInfo = { name, email };
+                
+                const explanationBullet = INCLUDE_EXPLANATION ? 
+                    '<li>You must provide a brief explanation for your answer in the "Explanation" field.</li>' : '';
+                
+                document.getElementById('content').innerHTML = `
+                    <div class="instructions-section">
+                        <h1>🤖 AgentVQA Human Evaluation</h1>
+                        
+                        <h2>📋 Instructions</h2>
+                        <p>Welcome to the AgentVQA Human Evaluation study. Thank you for participating! This evaluation will help us assess AI systems' understanding of visual content.</p>
+                        
+                        <h2>🎯 Your Task</h2>
+                        <p>You will be shown a series of questions, each with:</p>
+                        <ul>
+                            <li><strong>Media content</strong> (images or videos)</li>
+                            <li><strong>A question</strong> about the media</li>
+                            <li><strong>Multiple choice options</strong></li>
+                        </ul>
+                        <p>Your job is to select the <strong>single best answer</strong> from the given options.</p>
+                        
+                        <h2>⚠️ Important Guidelines</h2>
+                        <ul>
+                            <li>Read the question carefully and analyze the media provided.</li>
+                            <li>Enter your answer in the "Answer" field. Please provide only the letter (e.g., A, B, C).</li>
+                            ${explanationBullet}
+                            <li>Use the "Next" and "Previous" buttons to navigate between samples.</li>
+                            <li>When you are finished, click the "Finish" button on the last sample.</li>
+                        </ul>
+                        
+                        <div class="highlight">
+                            <strong>⏱️ Estimated Time:</strong> This evaluation contains multiple samples and may take 30-60 minutes to complete. You can take breaks, but please try to complete it in one session.
+                        </div>
+                        
+                        <h2>📧 Submission</h2>
+                        <p>After completing all questions, your responses will be automatically downloaded as a JSON file. Please email this file to <strong>advait25@umd.edu</strong>.</p>
+                        
+                        <div style="text-align: center; margin-top: 40px;">
+                            <button class="btn btn-primary" onclick="startEvaluation()" style="font-size: 16px; padding: 15px 40px;">
+                                Start Evaluation
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        };
+
+        window.startEvaluation = function() {
+            loadDatasets();
+        };
+
+        function cleanText(text) {
+            if (!text) return text;
+            return text.replace(/\*\*/g, '');
+        }
+
+        function formatOptions(optionsStr) {
+            try {
+                let options;
+                
+                if (Array.isArray(optionsStr)) {
+                    options = optionsStr;
+                } else if (typeof optionsStr === 'string') {
+                    options = JSON.parse(optionsStr.replace(/'/g, '"'));
+                } else {
+                    return optionsStr;
+                }
+                
+                const labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+                return options.map((opt, idx) => `${labels[idx]}) ${cleanText(opt)}`).join('\n');
+            } catch (e) {
+                console.error('Error parsing options:', e, optionsStr);
+                return cleanText(optionsStr);
+            }
+        }
+
+        function removeDuplicateOptions(text) {
+            if (!text) return text;
+            
+            const optionsCount = (text.match(/Options:/g) || []).length;
+            
+            if (optionsCount > 1) {
+                const firstOptionsIndex = text.indexOf('Options:');
+                const secondOptionsIndex = text.indexOf('Options:', firstOptionsIndex + 1);
+                
+                if (secondOptionsIndex !== -1) {
+                    const beforeFirst = text.substring(0, firstOptionsIndex);
+                    const afterSecond = text.substring(secondOptionsIndex);
+                    return beforeFirst + afterSecond;
+                }
+            }
+            
+            return text;
+        }
+
+        function formatERQAPrompt(text) {
+            if (!text) return text;
+            
+            if (!text.includes('Choices:')) return text;
+            
+            const parts = text.split('Choices:');
+            if (parts.length !== 2) return text;
+            
+            const beforeChoices = parts[0].trim();
+            const choicesAndAfter = parts[1];
+            
+            const pleaseIndex = choicesAndAfter.indexOf('Please answer');
+            
+            if (pleaseIndex === -1) {
+                const choices = choicesAndAfter.trim();
+                const formattedChoices = choices.split(/([A-H]\.\s)/g)
+                    .filter(part => part.trim())
+                    .reduce((acc, part, idx, arr) => {
+                        if (part.match(/^[A-H]\.\s$/)) {
+                            acc.push(part + arr[idx + 1]);
+                        }
+                        return acc;
+                    }, [])
+                    .join('\n');
+                
+                return `${beforeChoices}\n\nChoices:\n${formattedChoices}`;
+            }
+            
+            const choicesText = choicesAndAfter.substring(0, pleaseIndex).trim();
+            const afterText = choicesAndAfter.substring(pleaseIndex).trim();
+            
+            const formattedChoices = choicesText.split(/([A-H]\.\s)/g)
+                .filter(part => part.trim())
+                .reduce((acc, part, idx, arr) => {
+                    if (part.match(/^[A-H]\.\s$/)) {
+                        acc.push(part + (arr[idx + 1] || '').trim());
+                    }
+                    return acc;
+                }, [])
+                .join('\n');
+            
+            return `${beforeChoices}\n\nChoices:\n${formattedChoices}\n\n${afterText}`;
+        }
+
+        function createUserPrompt(sample) {
+            if (sample._datasetType === 'perception_test') {
+                const question = cleanText(sample.question || '');
+                const optionsFormatted = formatOptions(sample.options || '[]');
+                
+                return `Question: ${question}
+
+Options:
+${optionsFormatted}
+
+Based on the video, select the single best option from the list above. Your response must be ONLY a single character corresponding to the correct option (A, B, or C). Do not include any explanation or additional text.`;
+            }
+            
+            if (sample._datasetType === 'vsi_mcq') {
+                const question = cleanText(sample.question || '');
+                const optionsFormatted = formatOptions(sample.options || '[]');
+                
+                return `Question: ${question}
+
+Options:
+${optionsFormatted}
+
+Based on the video, select the single best option from the list above. Your response must be ONLY a single character corresponding to the correct option (A, B, C, or D). Do not include any explanation or additional text.`;
+            }
+            
+            let prompt = sample.user_prompt || 'No prompt available';
+            prompt = cleanText(prompt);
+            prompt = removeDuplicateOptions(prompt);
+            
+            // Only format ERQA prompts - check if dataset is erqa-dataset
+            const datasetName = sample._datasetName || sample.dataset || '';
+            if (datasetName.includes('erqa')) {
+                prompt = formatERQAPrompt(prompt);
+            }
+            
+            return prompt;
+        }
+
+        async function loadDatasets() {
+            document.getElementById('progressBar').style.display = 'block';
+            document.getElementById('progressText').style.display = 'block';
+            document.getElementById('progressText').textContent = 'Loading datasets...';
+            
+            document.getElementById('content').innerHTML = '<div class="loading">Loading datasets from HuggingFace...</div>';
+            
+            try {
+                dataset = [];
+                
+                for (const mediaCol of MEDIA_COLUMNS) {
+                    let samples;
+                    
+                    if (DATASET_CATEGORY === 'games_part1' && mediaCol === 'media_col_skonan/Atari_Multiple_Choice_1400') {
+                        samples = await fetchLimitedFromOriginalDataset(mediaCol, 50);
+                    } else {
+                        samples = await fetchAllFromOriginalDataset(mediaCol);
+                    }
+                    
+                    dataset.push(...samples);
+                    console.log(`Loaded ${samples.length} samples from ${mediaCol}`);
+                }
+                
+                if (DATASET_CATEGORY === 'ego_video' || DATASET_CATEGORY === 'all') {
+                    const perceptionSamples = await fetchSeparateDataset('advaitgupta/perception_test_mcq', SAMPLES_PER_SPECIAL_DATASET);
+                    perceptionSamples.forEach(sample => {
+                        sample._datasetType = 'perception_test';
+                        sample._datasetName = 'perception_test_mcq';
+                    });
+                    dataset.push(...perceptionSamples);
+                    console.log(`Loaded ${perceptionSamples.length} samples from perception_test_mcq`);
+                }
+                
+                if (DATASET_CATEGORY === 'ego_video' || DATASET_CATEGORY === 'all') {
+                    const vsiSamples = await fetchVSIWithBalancedTypes(SAMPLES_PER_SPECIAL_DATASET);
+                    vsiSamples.forEach(sample => {
+                        sample._datasetType = 'vsi_mcq';
+                        sample._datasetName = 'vsi_mcq';
+                    });
+                    dataset.push(...vsiSamples);
+                    console.log(`Loaded ${vsiSamples.length} samples from vsi_mcq`);
+                }
+                
+                if (dataset.length === 0) {
+                    throw new Error('No samples found from target datasets');
+                }
+                
+                console.log(`Successfully loaded ${dataset.length} total samples`);
+                
+                // Save initial progress after loading dataset
+                await saveProgress();
+                
+                renderSample();
+            } catch (error) {
+                console.error('Full error:', error);
+                document.getElementById('content').innerHTML = `
+                    <div class="loading" style="color: #d32f2f;">
+                        <strong>Error loading dataset:</strong> ${error.message}<br><br>
+                        <button onclick="location.reload()" class="btn btn-primary" style="margin-top: 15px;">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        async function fetchSeparateDataset(datasetName, count) {
+            const baseUrl = 'https://datasets-server.huggingface.co/rows';
+            const params = new URLSearchParams({
+                dataset: datasetName,
+                config: 'default',
+                split: 'train',
+                offset: '0',
+                length: count.toString()
+            });
+            
+            const response = await fetch(`${baseUrl}?${params}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (!response.ok) {
+                console.error(`Failed to load ${datasetName}`);
+                return [];
+            }
+            
+            const data = await response.json();
+            
+            if (!data.rows || data.rows.length === 0) {
+                return [];
+            }
+            
+            return data.rows.map(r => r.row).slice(0, count);
+        }
+
+        async function fetchVSIWithBalancedTypes(count) {
+            const baseUrl = 'https://datasets-server.huggingface.co/rows';
+            const batchSize = 100;
+            let offset = 0;
+            const allSamples = [];
+            
+            while (allSamples.length < 200 && offset < 500) {
+                const params = new URLSearchParams({
+                    dataset: 'advaitgupta/vsi_mcq',
+                    config: 'default',
+                    split: 'train',
+                    offset: offset.toString(),
+                    length: batchSize.toString()
+                });
+                
+                const response = await fetch(`${baseUrl}?${params}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) break;
+                
+                const data = await response.json();
+                if (!data.rows || data.rows.length === 0) break;
+                
+                allSamples.push(...data.rows.map(r => r.row));
+                offset += batchSize;
+            }
+            
+            const typeGroups = {};
+            allSamples.forEach(sample => {
+                const qType = sample.question_type || 'unknown';
+                if (!typeGroups[qType]) {
+                    typeGroups[qType] = [];
+                }
+                typeGroups[qType].push(sample);
+            });
+            
+            const questionTypes = Object.keys(typeGroups);
+            console.log('VSI question types found:', questionTypes);
+            
+            const samplesPerType = Math.ceil(count / questionTypes.length);
+            const selectedSamples = [];
+            
+            for (const qType of questionTypes) {
+                const samples = typeGroups[qType].slice(0, samplesPerType);
+                selectedSamples.push(...samples);
+                if (selectedSamples.length >= count) break;
+            }
+            
+            return selectedSamples.slice(0, count);
+        }
+
+        async function fetchLimitedFromOriginalDataset(mediaColumn, limit) {
+            const baseUrl = 'https://datasets-server.huggingface.co/rows';
+            let samples = [];
+            let offset = 0;
+            const batchSize = 100;
+            
+            while (samples.length < limit && offset < 10000) {
+                const params = new URLSearchParams({
+                    dataset: 'skonan/all_ds_for_human_review',
+                    config: 'default',
+                    split: 'train',
+                    offset: offset.toString(),
+                    length: batchSize.toString()
+                });
+                
+                const response = await fetch(`${baseUrl}?${params}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) break;
+                
+                const data = await response.json();
+                if (!data.rows || data.rows.length === 0) break;
+                
+                for (const item of data.rows) {
+                    const row = item.row;
+                    if (row[mediaColumn] && row[mediaColumn] !== null) {
+                        samples.push(row);
+                        if (samples.length >= limit) break;
+                    }
+                }
+                
+                offset += batchSize;
+            }
+            
+            return samples.slice(0, limit);
+        }
+
+        async function fetchAllFromOriginalDataset(mediaColumn) {
+            const baseUrl = 'https://datasets-server.huggingface.co/rows';
+            let samples = [];
+            let offset = 0;
+            const batchSize = 100;
+            
+            if (mediaColumn === 'media_col_advaitgupta/perception_test_mcq' ||
+                mediaColumn === 'media_col_advaitgupta/vsi_mcq') {
+                return [];
+            }
+            
+            let consecutiveEmptyBatches = 0;
+            while (consecutiveEmptyBatches < 3) {
+                const params = new URLSearchParams({
+                    dataset: 'skonan/all_ds_for_human_review',
+                    config: 'default',
+                    split: 'train',
+                    offset: offset.toString(),
+                    length: batchSize.toString()
+                });
+                
+                const response = await fetch(`${baseUrl}?${params}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    consecutiveEmptyBatches++;
+                    offset += batchSize;
+                    continue;
+                }
+                
+                const data = await response.json();
+                
+                if (!data.rows || data.rows.length === 0) {
+                    consecutiveEmptyBatches++;
+                    offset += batchSize;
+                    continue;
+                }
+                
+                consecutiveEmptyBatches = 0;
+                
+                for (const item of data.rows) {
+                    const row = item.row;
+                    if (row[mediaColumn] && row[mediaColumn] !== null) {
+                        samples.push(row);
+                    }
+                }
+                
+                offset += batchSize;
+                
+                if (offset > 50000) {
+                    break;
+                }
+            }
+            
+            return samples;
+        }
+
+        function getMediaContent(sample) {
+            for (const col of MEDIA_COLUMNS) {
+                if (sample[col] && sample[col] !== null) {
+                    return { column: col, data: sample[col] };
+                }
+            }
+            
+            for (const col of ALL_MEDIA_COLUMNS) {
+                if (sample[col] && sample[col] !== null) {
+                    return { column: col, data: sample[col] };
+                }
+            }
+            return null;
+        }
+
+        function renderMedia(sample) {
+            if (sample._datasetType === 'perception_test' || sample._datasetType === 'vsi_mcq') {
+                const videoData = sample.video;
+                
+                if (!videoData) {
+                    return '<p style="color: #999;">No video available</p>';
+                }
+                
+                if (typeof videoData === 'object') {
+                    const src = videoData.src || videoData.path || videoData.url;
+                    if (src) {
+                        return `<video controls src="${src}" style="max-width: 100%; max-height: 600px;">Your browser does not support video.</video>`;
+                    }
+                } else if (typeof videoData === 'string') {
+                    return `<video controls src="${videoData}" style="max-width: 100%; max-height: 600px;">Your browser does not support video.</video>`;
+                }
+                
+                return '<p style="color: #999;">Unsupported video format</p>';
+            }
+            
+            const mediaData = getMediaContent(sample);
+            
+            if (!mediaData) {
+                return '<p style="color: #999;">No media available</p>';
+            }
+
+            const data = mediaData.data;
+            
+            if (Array.isArray(data)) {
+                const images = data.map((item, idx) => {
+                    const src = item.src || item;
+                    return `<img src="${src}" alt="Image ${idx + 1}" loading="lazy">`;
+                }).join('');
+                return `<div class="media-grid">${images}</div>`;
+            }
+            
+            if (typeof data === 'object' && data.src) {
+                if (data.src.includes('.mp4') || data.src.includes('.webm') || data.src.includes('video')) {
+                    return `<video controls src="${data.src}">Your browser does not support video.</video>`;
+                }
+                return `<img src="${data.src}" alt="Media content">`;
+            }
+            
+            if (typeof data === 'string') {
+                if (data.includes('.mp4') || data.includes('.webm')) {
+                    return `<video controls src="${data}">Your browser does not support video.</video>`;
+                }
+                return `<img src="${data}" alt="Media content">`;
+            }
+            
+            return '<p style="color: #999;">Unsupported media format</p>';
+        }
+
+        function saveCurrentResponse() {
+            const answer = document.getElementById('answer').value;
+            const explanationEl = document.getElementById('explanation');
+            
+            responses[currentIndex] = {
+                answer,
+                explanation: explanationEl ? explanationEl.value : '',
+                timestamp: new Date().toISOString()
+            };
+            
+            // Auto-save progress to IndexedDB
+            saveProgress();
+        }
+
+        function renderSample() {
+            if (dataset.length === 0) return;
+
+            const sample = dataset[currentIndex];
+            
+            const progress = ((currentIndex + 1) / dataset.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `Sample ${currentIndex + 1} of ${dataset.length}`;
+
+            const savedResponse = responses[currentIndex] || { answer: '', explanation: '' };
+            
+            const userPrompt = createUserPrompt(sample);
+            const datasetName = sample._datasetName || sample.dataset || 'N/A';
+
+            const explanationField = INCLUDE_EXPLANATION ? `
+                <div class="form-section">
+                    <label for="explanation">Explanation / Additional Comments <span class="required">*</span></label>
+                    <textarea id="explanation" placeholder="Please explain your reasoning..." required>${savedResponse.explanation}</textarea>
+                    <div class="error-message" id="explanationError">This field is required</div>
+                </div>
+            ` : '';
+
+            document.getElementById('content').innerHTML = `
+                <div class="dataset-info">
+                    <strong>Dataset:</strong> ${datasetName}
+                </div>
+
+                <div class="media-container">
+                    ${renderMedia(sample)}
+                </div>
+
+                <div class="prompt-section">
+                    <h3>User Prompt</h3>
+                    <div class="prompt-text">${userPrompt}</div>
+                </div>
+
+                <div class="form-section">
+                    <label for="answer">Answer <span class="required">*</span></label>
+                    <input type="text" id="answer" placeholder="Enter your answer here..." value="${savedResponse.answer}" required>
+                    <div class="error-message" id="answerError">This field is required</div>
+                </div>
+
+                ${explanationField}
+
+                <div class="navigation">
+                    <button class="btn btn-secondary" id="prevBtn" ${currentIndex === 0 ? 'disabled' : ''}>Previous</button>
+                    <button class="btn btn-primary" id="nextBtn">${currentIndex === dataset.length - 1 ? 'Finish' : 'Next'}</button>
+                </div>
+            `;
+
+            document.getElementById('prevBtn').addEventListener('click', goToPrevious);
+            document.getElementById('nextBtn').addEventListener('click', goToNext);
+            
+            document.getElementById('answer').addEventListener('input', saveCurrentResponse);
+            if (INCLUDE_EXPLANATION) {
+                document.getElementById('explanation').addEventListener('input', saveCurrentResponse);
+            }
+        }
+
+        function validateAnswer() {
+            const answer = document.getElementById('answer').value.trim();
+            const answerError = document.getElementById('answerError');
+            
+            let isValid = true;
+            
+            if (!answer) {
+                answerError.style.display = 'block';
+                document.getElementById('answer').style.borderColor = '#d32f2f';
+                isValid = false;
+            } else {
+                answerError.style.display = 'none';
+                document.getElementById('answer').style.borderColor = '#e0e0e0';
+            }
+            
+            if (INCLUDE_EXPLANATION) {
+                const explanation = document.getElementById('explanation').value.trim();
+                const explanationError = document.getElementById('explanationError');
+                
+                if (!explanation) {
+                    explanationError.style.display = 'block';
+                    document.getElementById('explanation').style.borderColor = '#d32f2f';
+                    isValid = false;
+                } else {
+                    explanationError.style.display = 'none';
+                    document.getElementById('explanation').style.borderColor = '#e0e0e0';
+                }
+            }
+            
+            return isValid;
+        }
+
+        function goToNext() {
+            if (!validateAnswer()) {
+                return;
+            }
+            
+            saveCurrentResponse();
+            
+            if (currentIndex === dataset.length - 1) {
+                submitResponses();
+            } else {
+                currentIndex++;
+                saveProgress(); // Save progress when moving to next question
+                renderSample();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function goToPrevious() {
+            saveCurrentResponse();
+            if (currentIndex > 0) {
+                currentIndex--;
+                saveProgress(); // Save progress when moving to previous question
+                renderSample();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        async function submitResponses() {
+            const results = {
+                reviewer_name: reviewerInfo.name,
+                reviewer_email: reviewerInfo.email,
+                dataset_category: DATASET_CATEGORY,
+                includes_explanation: INCLUDE_EXPLANATION,
+                submission_date: new Date().toISOString(),
+                responses: dataset.map((sample, idx) => ({
+                    sample_index: idx,
+                    dataset: sample._datasetName || sample.dataset,
+                    user_prompt: createUserPrompt(sample),
+                    ground_truth: sample.ground_truth || sample.answer,
+                    ...responses[idx]
+                }))
+            };
+
+            const dataStr = JSON.stringify(results, null, 2);
+            
+            try {
+                document.getElementById('content').innerHTML = '<div class="loading">Submitting your evaluation...</div>';
+                
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                const categoryTag = DATASET_CATEGORY !== 'all' ? `_${DATASET_CATEGORY}` : '';
+                const explanationTag = INCLUDE_EXPLANATION ? '_with_explanation' : '_no_explanation';
+                link.download = `evaluation_${reviewerInfo.name.replace(/\s+/g, '_')}${categoryTag}${explanationTag}_${new Date().toISOString().slice(0,10)}.json`;
+                link.click();
+                URL.revokeObjectURL(url);
+                
+                showCompletionMessage();
+            } catch (error) {
+                console.error('Error submitting:', error);
+                alert('There was an error submitting. Your evaluation has been downloaded instead.');
+            }
+        }
+
+        function showCompletionMessage() {
+            // Clear saved progress after successful completion
+            clearProgress();
+            
+            document.getElementById('content').innerHTML = `
+                <div class="success-message">
+                    <h2>✅ Evaluation Complete!</h2>
+                    <p>Thank you, ${reviewerInfo.name}!</p>
+                    <p>You've successfully reviewed all ${dataset.length} samples.</p>
+                    <p style="margin-top: 30px; color: #888; font-size: 16px;">
+                        Your evaluation has been downloaded as a JSON file.<br>
+                        Please email this file to: <strong>advait25@umd.edu</strong>
+                    </p>
+                    <button class="btn btn-primary" onclick="location.reload()" style="margin-top: 30px;">
+                        Start New Evaluation
+                    </button>
+                </div>
+            `;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (dataset.length === 0) return;
+            
+            if (e.key === 'ArrowRight' && currentIndex < dataset.length - 1) {
+                goToNext();
+            } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                goToPrevious();
+            }
+        });
+    </script>
+</body>
+</html>
