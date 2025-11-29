@@ -32,7 +32,7 @@ I am applying to PhD programs for Fall 2026 admission and am always eager to con
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft</div></div></div>
 <div class='paper-box-text' markdown="1">
 
-[M<sup>3</sup>-EDIT: An Agentic Framework for \textsc{M}ulti-modal, \textsc{M}ulti-reference, \textsc{M}ulti-task Editing](https://drive.google.com/file/d/1tkoE_fvs1OB2poH0k4CJn4fzAiAtB7NG/view?usp=sharing) 
+[M<sup>3</sup>-EDIT: An Agentic Framework for Multi-modal, Multi-reference, Multi-task Editing](https://drive.google.com/file/d/1tkoE_fvs1OB2poH0k4CJn4fzAiAtB7NG/view?usp=sharing) 
 
 **Advait Gupta**, Rishie Raj, Ruohan Gao
 
