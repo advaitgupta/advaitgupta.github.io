@@ -32,6 +32,18 @@ I am applying to PhD programs for Fall 2026 admission and am always eager to con
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft</div></div></div>
 <div class='paper-box-text' markdown="1">
 
+[\textsc{M$^3$-Edit}\xspace: An Agentic Framework for \textsc{M}ulti-modal, \textsc{M}ulti-reference, \textsc{M}ulti-task Editing](https://drive.google.com/file/d/1tkoE_fvs1OB2poH0k4CJn4fzAiAtB7NG/view?usp=sharing) 
+
+**Advait Gupta**, Rishie Raj, Ruohan Gao
+
+\textsc{M$^3$-Edit}\xspace is an agentic framework for multi-modal, multi-reference, multi-task editing that addresses the critical grounding failures of existing agents, which struggle to interpret complex, cross-modal instructions. To solve this, \textsc{M$^3$-Edit}\xspace employs a novel two-stage architecture that strictly decouples perception from action: an initial Analysis & Grounding stage constructs a verified, machine-readable map of all inputs called the Unified Editing Canvas (UEC), and a subsequent Manipulation & Execution stage operates on this fully-grounded canvas to generate and execute a precise, step-by-step editing plan. This design enables robust, compositional workflows and allows for granular, step-by-step quality control, a crucial advantage over monolithic models. The framework's effectiveness is validated on M³-BENCH, our new benchmark of 110 complex, multi-reference tasks designed to test the limits of agentic multimodal reasoning.
+
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft</div></div></div>
+<div class='paper-box-text' markdown="1">
+
 [AgentVQA: A Unified Benchmark for Agentic Visual Understanding](https://drive.google.com/file/d/1gT1MkXptga2njI7mVKMo42Q51bjuNink/view?usp=sharing) 
 
 **Advait Gupta**, Sachin Konan, Gabriel Sarch, Zhuang Liu
