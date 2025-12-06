@@ -29,7 +29,7 @@ I am applying to PhD programs for Fall 2026 admission and am always eager to con
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft (Under review - CVPR)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft (Under review)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [M<sup>3</sup>-EDIT: An Agentic Framework for Multi-modal, Multi-reference, Multi-task Editing](https://drive.google.com/file/d/1tkoE_fvs1OB2poH0k4CJn4fzAiAtB7NG/view?usp=sharing) 
@@ -41,7 +41,7 @@ I am applying to PhD programs for Fall 2026 admission and am always eager to con
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft (Under review - ICLR)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft (Under review)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [AgentVQA: A Unified Benchmark for Agentic Visual Understanding](https://drive.google.com/file/d/1gT1MkXptga2njI7mVKMo42Q51bjuNink/view?usp=sharing) 
@@ -53,7 +53,7 @@ AgentVQA is a unified benchmark for agentic visual understanding that systematic
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint (Under review - ICLR)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint (Under review)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [FaSTA*: Fast-Slow Toolpath Agent with Subroutine Mining for Efficient Multi-turn Image Editing](https://arxiv.org/abs/2506.20911) [[**Project**](https://github.com/tianyi-lab/FaSTAR)<strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>]
@@ -65,7 +65,7 @@ FaSTA* is a neurosymbolic online learning, tool-use agent with fast-slow plannin
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint (Under review - ICLR)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint (Under review)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) [[**Project**](https://github.com/tianyi-lab/CoSTAR)<strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>]
