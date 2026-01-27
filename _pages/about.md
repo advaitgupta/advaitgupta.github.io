@@ -22,7 +22,7 @@ Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University o
 I am applying to PhD programs for Fall 2026 admission and am always eager to connect with fellow researchers. If my work aligns with your interests, please feel free to reach out.
 
 # 🔥 News
-- *2026.01*: 🎉🎉One first-author paper ([FaSTA*](https://arxiv.org/abs/2506.20911)) has been accepted by ICLR 2026. 
+- *2026.01*: 🎉🎉 One first-author paper ([FaSTA*](https://arxiv.org/abs/2506.20911)) has been accepted by ICLR 2026. 
 - *2025.06*: We release [FaSTA*: Fast-Slow Toolpath Agent with Subroutine Mining for Efficient Multi-turn Image Editing](https://arxiv.org/abs/2506.20911) with the [Official Codebase](https://github.com/tianyi-lab/FaSTAR). 
 - *2025.03*: We release [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) with the [Official Codebase](https://github.com/tianyi-lab/CoSTAR), [Live Demo](https://storage.googleapis.com/costa-frontend/index.html) and [Benchmark Dataset](https://huggingface.co/datasets/advaitgupta/CoSTAR). 
 - *2024.08*: Joined University of Maryland for an MS in Machine Learning. 
