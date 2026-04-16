@@ -19,7 +19,7 @@ redirect_from:
 
 Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University of Maryland, College Park, and am part of [Prof. Tianyi Zhou](https://tianyizhou.github.io)'s research lab. I also collaborate with [Prof. Zhuang Liu](https://liuzhuang13.github.io) at Princeton University and [Prof. Ruohan Gao](https://ruohangao.github.io) at the University of Maryland. I have a diverse range of research experience spanning neurosymbolic reasoning for agentic planning, multimodal visual understanding, emergent architectural properties of LLMs, and classical CV and genAI systems. My recent research focusses on cost-sensitive, adaptive agents by combining LLM-driven hierarchical planning with classical A* search and enabling them to learn by mining reusable tool sequences via in-context reinforcement learning and inductive reasoning. My work also extends to embodied agents and their evaluation for agentic visual understanding. Previously, I earned my B.Tech degree in Computer Science from Rajiv Gandhi Institute of Petroleum Technology where I researched on applying computer vision in healthcare, construction and urban analytics.
 
-I am applying to PhD programs for Fall 2026 admission and am always eager to connect with fellow researchers. If my work aligns with your interests, please feel free to reach out.
+I am always eager to connect with fellow researchers. If my work aligns with your interests, please feel free to reach out.
 
 # 🔥 News
 - *2026.01*: 🎉🎉 One first-author paper ([FaSTA*](https://arxiv.org/abs/2506.20911)) has been accepted by ICLR 2026. 
