@@ -30,7 +30,7 @@ I am always eager to connect with fellow researchers. If my work aligns with you
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft (Under review)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Under review</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [M<sup>3</sup>-EDIT: An Agentic Framework for Multi-modal, Multi-reference, Multi-task Editing](https://drive.google.com/file/d/1tkoE_fvs1OB2poH0k4CJn4fzAiAtB7NG/view?usp=sharing) 
@@ -42,7 +42,7 @@ I am always eager to connect with fellow researchers. If my work aligns with you
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Draft (Under review)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Under review</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [AgentVQA: A Unified Benchmark for Agentic Visual Understanding](https://drive.google.com/file/d/1gT1MkXptga2njI7mVKMo42Q51bjuNink/view?usp=sharing) 
@@ -66,7 +66,7 @@ FaSTA* is a neurosymbolic online learning, tool-use agent with fast-slow plannin
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Preprint (Under review)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Under review</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) [[**Project**](https://github.com/tianyi-lab/CoSTAR)<strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>]
