@@ -67,7 +67,7 @@ FaSTA* is a neurosymbolic online learning, tool-use agent with fast-slow plannin
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2026 (Findings)</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2026</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) [[**Project**](https://github.com/tianyi-lab/CoSTAR)<strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>]
