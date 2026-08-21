@@ -22,6 +22,7 @@ Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University o
 I am always eager to connect with fellow researchers. If my work aligns with your interests, please feel free to reach out.
 
 # 🔥 News
+- *2026.08*: 🎉🎉 One first-author paper ([CoSTA*](https://arxiv.org/abs/2503.10613)) has been accepted by EMNLP 2026 (Findings). 
 - *2026.01*: 🎉🎉 One first-author paper ([FaSTA*](https://arxiv.org/abs/2506.20911)) has been accepted by ICLR 2026. 
 - *2025.06*: We release [FaSTA*: Fast-Slow Toolpath Agent with Subroutine Mining for Efficient Multi-turn Image Editing](https://arxiv.org/abs/2506.20911) with the [Official Codebase](https://github.com/tianyi-lab/FaSTAR). 
 - *2025.03*: We release [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) with the [Official Codebase](https://github.com/tianyi-lab/CoSTAR), [Live Demo](https://storage.googleapis.com/costa-frontend/index.html) and [Benchmark Dataset](https://huggingface.co/datasets/advaitgupta/CoSTAR). 
@@ -66,7 +67,7 @@ FaSTA* is a neurosymbolic online learning, tool-use agent with fast-slow plannin
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Under review</div></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2026 (Findings)</div></div></div>
 <div class='paper-box-text' markdown="1">
 
 [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) [[**Project**](https://github.com/tianyi-lab/CoSTAR)<strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>]
