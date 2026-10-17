@@ -21,13 +21,12 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="nav-shell">
-      <a class="brand" href="./" aria-label="AgentVQA home"><img src="assets/favicon.svg" width="30" height="30" alt="">AgentVQA</a>
+      <a class="brand" href="./" aria-label="AgentVQA home">AgentVQA</a>
       <nav aria-label="Main navigation"><a href="./" aria-current="page">Overview</a><a href="results.html">Results</a></nav>
     </div>
   </header>
   <main id="main">
     <section class="hero section-shell" aria-labelledby="title">
-      <p class="eyebrow"><span class="status-dot"></span> A benchmark for visual agents</p>
       <h1 id="title">Agent<span>VQA</span></h1>
       <p class="tagline">A Unified Benchmark for<br>Agentic Visual Understanding</p>
       <p class="hero-description">Understanding a scene is only the beginning.<br class="desktop-break"> Can a model understand it well enough to <em>act</em>?</p>
@@ -43,7 +42,8 @@
         <div><strong>1,000</strong><span>human-verified questions</span></div>
         <div><strong>23</strong><span>source datasets</span></div>
         <div><strong>5</strong><span>agentic domains</span></div>
-        <div><strong>200</strong><span>questions per domain</span></div>
+        <div><strong>22</strong><span>model configurations evaluated</span></div>
+        <div class="accuracy-stat"><strong>58.5%</strong><span>best-model accuracy</span><small>Gemini 3.7 Flash</small></div>
       </div>
     </section>
 
@@ -71,7 +71,6 @@
           <div class="prediction-legend"><p>Model predictions</p><div id="model-legend"></div></div>
         </div>
         <noscript><p>The interactive examples require JavaScript. Browse every question in the <a href="https://huggingface.co/datasets/AgentVQA/AgentVQA">Hugging Face dataset</a>.</p></noscript>
-        <p class="small-note">Examples are selected to illustrate difficult cases, not estimate model accuracy. Predictions are from saved evaluations matched to the released questions and options; coordinates may have been normalized for each model. Videos load on demand. Select an image to view it at full resolution.</p>
       </div>
     </section>
 
@@ -88,7 +87,6 @@
         <article><p class="finding-number"><span>ρ = </span>0.895</p><h3>Agreement with online evaluation</h3><p>AgentVQA Spatial Planning tracks SpatialWorld Physical rankings across 12 shared models.</p></article>
         <article><div class="finding-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><h3>Failures begin before planning</h3><p>Error analysis points to grounding, motion perception, and spatial-state understanding—not just high-level reasoning.</p></article>
       </div>
-      <p class="small-note">Findings reported in the paper. Detailed scores, rank correlations, ablations, and error modes are on the Results page.</p>
     </div></section>
 
     <section class="section-shell section-block citation-section" aria-labelledby="citation-title">

@@ -3,6 +3,8 @@ window.AGENTVQA_DATA = {
   "examples": [
     {
       "id": "screenspot-17",
+      "displayQuestion": "To complete the instruction ‘Update the application that can be upgraded to V1.8.0 after upgrading’, which of the following actions should be performed?",
+      "displayGoal": "Update the application.",
       "domain": "Web Agents",
       "subset": "Screenspot",
       "row": 17,
@@ -56,6 +58,8 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "screenspot-pro-28",
+      "displayQuestion": "To complete the instruction ‘Rotate the 3D object’, which of the following actions should be performed?",
+      "displayGoal": "Rotate the 3D object.",
       "domain": "Web Agents",
       "subset": "Screenspot-Pro",
       "row": 28,
@@ -109,6 +113,8 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "aitw-31",
+      "displayQuestion": "Based on the goal and screen, what is the precise next action to perform?",
+      "displayGoal": "Search for ‘acer nitro’ on Walmart, select the first entry, and add it to the cart.",
       "domain": "Web Agents",
       "subset": "AitW",
       "row": 31,
@@ -162,6 +168,8 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "monday-4",
+      "displayQuestion": "Based on the screenshot and goal, what is the correct next action to perform?",
+      "displayGoal": "How do I add a Dark Mode shortcut to the iPhone Control Center (NEW 2023)?",
       "domain": "Web Agents",
       "subset": "MONDAY",
       "row": 4,
@@ -259,6 +267,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "perception-test-0",
+      "displayQuestion": "Which option correctly describes the person’s action in the video?",
       "domain": "Egocentric Videos",
       "subset": "Perception-Test",
       "row": 0,
@@ -304,6 +313,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "openeqa-6",
+      "displayQuestion": "What is the grey object below the TV in the living room?",
       "domain": "Egocentric Videos",
       "subset": "OpenEQA",
       "row": 6,
@@ -396,6 +406,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "egoplan-bench-17",
+      "displayGoal": "Add salt to the food.",
       "domain": "Egocentric Videos",
       "subset": "EgoPlan-Bench",
       "row": 17,
@@ -442,6 +453,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "gameqa-29",
+      "displayQuestion": "Rules:\n1. The player can only walk on top of cubes.\n2. The player can climb ladders if they can reach the cube under the ladder.\n3. From a ladder, the player can reach the top of the last cube with the ladder.\n4. The blue cube is the start position; the red cube is the goal position.\n5. Numbered cubes are branch points.\n\nWhich numbered blocks are passed through when following the most direct path from start to goal?",
       "domain": "Games",
       "subset": "GameQA",
       "row": 29,
@@ -499,6 +511,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "marioqa-37",
+      "displayQuestion": "How many coins did Mario eat before a plant appeared?",
       "domain": "Games",
       "subset": "MarioQA",
       "row": 37,
@@ -545,6 +558,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "atari-30",
+      "displayQuestion": "GAME: Berzerk\n\nGAME_DESCRIPTION: You are stuck in a maze with evil robots. You must destroy them and avoid touching the walls of the maze, as this will kill you. You may be awarded extra lives after scoring a sufficient number of points, depending on the game mode. You may also be chased by an undefeatable enemy, Evil Otto, that you must avoid. Evil Otto does not appear in the default mode.\n\nGAME_VISUALS: Blue rectangular room walls forming confined spaces. Multiple small white stick figure humanoid sprites as robot enemies. One darker/yellow stick figure sprite as player character. Small white dots on floor as bullets or debris. Simple stick-figure art style with clear distinction between player and enemies. Rooms have doorway openings.\n\nREWARD_STRUCTURE: You score points for destroying robots.\n\nTASK: Action Recognition\n\nQUESTION: Which action was taken to transition from the first state to the second?\n\nChoices:\n0. UPFIRE\n1. FIRE\n2. UPRIGHTFIRE\n3. RIGHTFIRE",
       "domain": "Games",
       "subset": "Atari",
       "row": 30,
@@ -651,6 +665,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "spatial-mm-4",
+      "displayQuestion": "Which color is the ball in front of the girl in the green patterned jacket standing near the goalpost?",
       "domain": "Spatial Planning",
       "subset": "Spatial-MM",
       "row": 4,
@@ -757,6 +772,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "embspatial-bench-2",
+      "displayQuestion": "Which object, in relation to your current position, holds the nearest placement in the image? Consider the closest point of the object to determine the distance.",
       "domain": "Spatial Planning",
       "subset": "EmbSpatial-Bench",
       "row": 2,
@@ -810,6 +826,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "space-10-2",
+      "displayQuestion": "When viewing from the entrance, which description is correct?",
       "domain": "Spatial Planning",
       "subset": "SpaCE-10",
       "row": 2,
@@ -898,6 +915,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "3dsrbench-36",
+      "displayQuestion": "Consider the real-world 3D locations and orientations of the objects. In which direction is the bus driver trying to take the bus?",
       "domain": "Spatial Planning",
       "subset": "3DSRBench",
       "row": 36,
@@ -951,6 +969,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "robo2vlm-5",
+      "displayQuestion": "The robot’s task is to move the blue plastic water bottle near the green can. Which configuration shows the goal state that the robot should achieve?",
       "domain": "Robotics",
       "subset": "Robo2VLM",
       "row": 5,
@@ -1005,6 +1024,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "manipbench-0",
+      "displayQuestion": "The robot’s task is to move the pan to the upper left of the spoon. Based on the image and task description, which of the following four choices gives the correct picking point and trajectory to complete the task?",
       "domain": "Robotics",
       "subset": "ManipBench",
       "row": 0,
@@ -1058,6 +1078,8 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "roborefit-23",
+      "displayQuestion": "Will you please fetch me the brown teddy bear in a shirt on the right?",
+      "displayGoal": "Will you please fetch me the brown teddy bear in a shirt on the right?",
       "domain": "Robotics",
       "subset": "Roborefit",
       "row": 23,
@@ -1234,6 +1256,7 @@ window.AGENTVQA_DATA = {
     },
     {
       "id": "erqa-19",
+      "displayQuestion": "The purple line in the second image corresponds to which colored line in the first image?",
       "domain": "Robotics",
       "subset": "ERQA",
       "row": 19,

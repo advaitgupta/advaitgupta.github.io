@@ -173,21 +173,22 @@
       $("sample-position").textContent = `${positions[domainIndex] + 1} / ${samples().length}`;
       $("sample-kind").textContent = sample.title;
       $("sample-context").replaceChildren();
-      for (const [label, value] of [["Episode Goal", sample.goal], ["Action History", sample.history]]) {
+      for (const [label, value] of [["Episode Goal", sample.displayGoal ?? sample.goal], ["Action History", sample.history]]) {
         if (!value) continue;
         const block = element("div", "sample-context");
         block.append(element("strong", "", label), element("p", "", typeof value === "string" ? value : JSON.stringify(value)));
         $("sample-context").append(block);
       }
       $("question-context").replaceChildren();
-      if (sample.subset === "Atari" && sample.question.includes("QUESTION:")) {
-        const split = sample.question.indexOf("QUESTION:");
+      const question = sample.displayQuestion ?? sample.question;
+      if (sample.subset === "Atari" && question.includes("QUESTION:")) {
+        const split = question.indexOf("QUESTION:");
         const details = element("details", "game-context");
-        details.append(element("summary", "", "Game description, visuals, and rules"), element("p", "", sample.question.slice(0, split).trim()));
+        details.append(element("summary", "", "Game description, visuals, and rules"), element("p", "", question.slice(0, split).trim()));
         $("question-context").append(details);
-        $("sample-question").textContent = sample.question.slice(split).trim();
+        $("sample-question").textContent = question.slice(split).trim();
       } else {
-        $("sample-question").textContent = sample.question;
+        $("sample-question").textContent = question;
       }
       $("sample-source").href = sample.source;
       showAnswer = true;
@@ -262,7 +263,6 @@
         row.append(cell);
         $("results-body").append(row);
       }
-      $("results-count").textContent = `${rows.length} of ${data.results.length} configurations shown.`;
       document.querySelectorAll("th[data-column]").forEach(th => {
         const active = th.dataset.column === column;
         th.setAttribute("aria-sort", active ? descending ? "descending" : "ascending" : "none");
