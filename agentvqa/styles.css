@@ -59,7 +59,9 @@ nav a:hover { color: var(--blue); }
 .authors span, .affiliations span { margin-inline: 10px; color: #8b9db5; }
 .affiliations { font-size: 13px; color: var(--muted); margin-top: 9px; }
 .author-note { font-size: 11px; color: var(--muted); margin-top: 7px; }
-.stats-rail { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 52px; padding-block: 24px; border-block: 1px solid var(--line); }
+.stats-rail { display: grid; grid-template-columns: repeat(5, minmax(max-content, 1fr)); overflow-x: auto; scrollbar-width: thin; margin-top: 52px; padding-block: 24px; border-block: 1px solid var(--line); }
+.stats-rail > div { padding-inline: 16px; }
+.stats-rail strong, .stats-rail span, .stats-rail small { white-space: nowrap; }
 .stats-rail div + div { border-left: 1px solid var(--line); }
 .stats-rail strong { display: block; font-size: 35px; line-height: 1.2; font-weight: 700; letter-spacing: -.05em; }
 .stats-rail span { display: block; color: var(--muted); font-size: 12px; margin-top: 7px; }
@@ -247,11 +249,8 @@ caption { text-align: left; color: var(--muted); font-size: 12px; padding: 13px 
   .authors span { margin-inline: 4px; }
   .affiliations { font-size: 11px; max-width: 310px; margin-inline: auto; }
   .author-note { font-size: 10px; }
-  .stats-rail { margin-top: 35px; grid-template-columns: 1fr 1fr; padding-block: 5px; }
-  .stats-rail div { padding: 16px 3px; }
-  .stats-rail div:nth-child(3) { border-left: none; }
-  .stats-rail div:nth-child(n+3) { border-top: 1px solid var(--line); }
-  .stats-rail .accuracy-stat { grid-column: 1 / -1; border-left: none; background: var(--pale); }
+  .stats-rail { margin-top: 35px; padding-block: 20px; }
+  .stats-rail > div { padding-inline: 14px; }
   .stats-rail strong { font-size: 28px; }
   .stats-rail span { font-size: 10px; }
   .section-block { padding-block: 54px; }
