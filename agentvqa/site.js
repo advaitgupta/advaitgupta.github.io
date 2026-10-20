@@ -30,7 +30,8 @@
     const current = () => samples()[positions[domainIndex]];
     const coordinateLayouts = {
       "screenspot-17": {angles: [0, -45, 45, 0]},
-      "screenspot-pro-28": {detail: [0, 175, 110, 120]},
+      "screenspot-pro-13": {angles: [-50, 0, 50, 0]},
+      "aitw-31": {offsets: {0: [0, -5]}},
       "roborefit-23": {angles: [0, 45, 0, 0]},
     };
     const svgElement = (tag, attributes = {}) => {
@@ -61,6 +62,9 @@
         marker.dataset.y = y;
         marker.style.left = `${100 * (x - left) / width}%`;
         marker.style.top = `${100 * (y - top) / height}%`;
+        const [offsetX, offsetY] = layout.offsets?.[index] || [0, 0];
+        marker.style.marginLeft = `${offsetX}px`;
+        marker.style.marginTop = `${offsetY}px`;
         marker.setAttribute("role", "img");
         if (!dots) {
           const angle = layout.angles?.[index] || 0;

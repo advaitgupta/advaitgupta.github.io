@@ -57,30 +57,30 @@ window.AGENTVQA_DATA = {
       "source": "https://huggingface.co/datasets/AgentVQA/AgentVQA/viewer/Screenspot/train?row=17"
     },
     {
-      "id": "screenspot-pro-28",
-      "displayQuestion": "To complete the instruction ‘Rotate the 3D object’, which of the following actions should be performed?",
-      "displayGoal": "Rotate the 3D object.",
+      "id": "screenspot-pro-13",
+      "displayQuestion": "To complete the instruction ‘Click Blur Dissolve’, which of the following actions should be performed?",
+      "displayGoal": "Click Blur Dissolve.",
       "domain": "Web Agents",
       "subset": "Screenspot-Pro",
-      "row": 28,
-      "title": "Finding the right tool in a complex interface",
-      "question": "To complete the instruction 'Rotate the 3D object', which of the following actions should be performed?\n\nThe point should be on the object perfectly and not even slighly off of it if the correct answer is choosing a coordinate.",
+      "row": 13,
+      "title": "Selecting a named video transition",
+      "question": "To complete the instruction 'Click Blur Dissolve', which of the following actions should be performed?\n\nThe point should be on the object perfectly and not even slighly off of it if the correct answer is choosing a coordinate.",
       "options": [
-        "Tap: [9, 237] ",
-        "Tap: [27, 254] ",
-        "Tap: [46, 253] ",
-        "Tap: [27, 219] "
+        "Tap: [461, 1359]",
+        "Tap: [584, 1340]",
+        "Tap: [700, 1371]",
+        "Tap: [490, 588]"
       ],
       "answer": 2,
-      "goal": "Rotate the 3D object",
+      "goal": "Blur Dissolve",
       "history": "",
       "images": [
-        "assets/examples/screenspot-pro-28-0.png"
+        "assets/examples/screenspot-pro-13-0.png"
       ],
       "sizes": [
         [
-          2560,
-          1440
+          3456,
+          2234
         ]
       ],
       "video": null,
@@ -91,12 +91,12 @@ window.AGENTVQA_DATA = {
         {
           "family": "openai",
           "model": "gpt-5.6-luna-high",
-          "answer": 0
+          "answer": 1
         },
         {
           "family": "claude",
           "model": "claude-opus-4-8",
-          "answer": 3
+          "answer": 1
         },
         {
           "family": "gemini",
@@ -106,10 +106,10 @@ window.AGENTVQA_DATA = {
         {
           "family": "qwen",
           "model": "Qwen3.7-Flash",
-          "answer": 3
+          "answer": 1
         }
       ],
-      "source": "https://huggingface.co/datasets/AgentVQA/AgentVQA/viewer/Screenspot-Pro/train?row=28"
+      "source": "https://huggingface.co/datasets/AgentVQA/AgentVQA/viewer/Screenspot-Pro/train?row=13"
     },
     {
       "id": "aitw-31",
