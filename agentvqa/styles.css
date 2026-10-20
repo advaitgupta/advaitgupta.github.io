@@ -94,14 +94,26 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: 12px; line-height
 .icon-button:hover { background: var(--pale); }
 .example-grid { display: grid; grid-template-columns: 1fr 1fr; }
 .example-visual { min-width: 0; padding: 24px; border-right: 1px solid var(--line); }
-.sample-media { display: grid; gap: 14px; min-height: 300px; align-items: center; align-content: center; justify-items: center; }
+.sample-media { --media-height: 430px; display: grid; gap: 14px; min-height: 300px; align-items: center; align-content: center; justify-items: center; }
 .sample-media figure, .sample-media a { display: block; width: 100%; min-width: 0; }
 .sample-media img { width: 100%; max-height: 430px; object-fit: contain; }
 .sample-media.multiple:has(figure:nth-child(3)) { grid-template-columns: 1fr 1fr; }
 .sample-media.multiple img { max-height: 270px; }
 .sample-media video { width: 100%; max-height: 450px; background: #161616; }
+.coordinate-image { position: relative; display: block; width: 100%; max-width: calc(var(--media-height) * var(--image-ratio, 1)); margin-inline: auto; }
+.coordinate-overlay { position: absolute; inset: 0; pointer-events: none; }
+.coordinate-marker { position: absolute; width: 24px; height: 30px; transform: translate(-50%, -100%); color: #d92d38; }
+.coordinate-marker.is-correct { color: #168447; }
+.coordinate-marker svg { display: block; width: 100%; height: 100%; overflow: visible; transform-origin: 50% 100%; }
+.coordinate-marker path { fill: currentColor; stroke: white; stroke-width: 1.4; stroke-linejoin: round; }
+.coordinate-marker text { fill: white; font: 700 12px var(--sans); text-anchor: middle; }
+.coordinate-dot { width: 6px; height: 6px; transform: translate(-50%, -50%); border: 1px solid white; border-radius: 50%; background: currentColor; }
+.coordinate-region { position: absolute; border: 1px dashed #526478; pointer-events: none; }
+.coordinate-detail { margin-top: 4px; }
+.coordinate-detail .coordinate-image { max-width: 220px; }
+.coordinate-crop { display: block; width: 100%; height: auto; }
 .image-label { margin-top: 5px; font-size: 11px; }
-.media-caption { margin-top: 18px; color: var(--muted); text-align: center; font-size: 11px; }
+.media-caption { margin-top: 18px; color: var(--muted); text-align: center; font-size: 11px; text-wrap: balance; }
 .example-content { min-width: 0; padding: 24px; }
 .sample-kind { margin-bottom: 14px; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .example-content h3 { font-size: 16px; line-height: 1.65; font-weight: 500; white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -193,7 +205,7 @@ caption { padding: 10px 12px; text-align: left; color: var(--muted); font-size: 
 @media (max-width: 850px) {
   .example-grid { grid-template-columns: 1fr; }
   .example-visual { border-right: 0; border-bottom: 1px solid var(--line); }
-  .sample-media { min-height: 240px; }
+  .sample-media { --media-height: 390px; min-height: 240px; }
   .sample-media.multiple { grid-template-columns: 1fr 1fr; }
   .sample-media img, .sample-media video { max-height: 390px; }
   .correlation-intro, .online-heading, .ablation-grid { gap: 25px; }

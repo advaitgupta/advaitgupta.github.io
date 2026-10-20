@@ -28,6 +28,65 @@
     const tabs = $("domain-controls");
     const samples = () => data.examples.filter(e => e.domain === data.domains[domainIndex].name);
     const current = () => samples()[positions[domainIndex]];
+    const coordinateLayouts = {
+      "screenspot-17": {angles: [0, -45, 45, 0]},
+      "screenspot-pro-28": {detail: [0, 175, 110, 120]},
+      "roborefit-23": {angles: [0, 45, 0, 0]},
+    };
+    const svgElement = (tag, attributes = {}) => {
+      const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, value));
+      return node;
+    };
+
+    function coordinateChoices(sample) {
+      if (sample.images.length !== 1 || !["Web Agents", "Robotics"].includes(sample.domain)) return [];
+      const [width, height] = sample.sizes[0];
+      return sample.options.flatMap((option, index) => {
+        const match = option.match(/^\s*(?:(?:Tap\s*:|CLICK\s+at)\s*)?\[\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*\]\s*$/i);
+        if (!match) return [];
+        const [x, y] = match.slice(1).map(Number);
+        return x < width && y < height ? [{index, x, y}] : [];
+      });
+    }
+
+    function coordinateOverlay(sample, bounds, dots = false) {
+      const [left, top, width, height] = bounds;
+      const overlay = element("span", "coordinate-overlay");
+      const layout = coordinateLayouts[sample.id] || {};
+      coordinateChoices(sample).forEach(({index, x, y}) => {
+        const marker = element("span", `coordinate-marker${dots ? " coordinate-dot" : ""}`);
+        marker.dataset.option = letter(index);
+        marker.dataset.x = x;
+        marker.dataset.y = y;
+        marker.style.left = `${100 * (x - left) / width}%`;
+        marker.style.top = `${100 * (y - top) / height}%`;
+        marker.setAttribute("role", "img");
+        if (!dots) {
+          const angle = layout.angles?.[index] || 0;
+          const svg = svgElement("svg", {viewBox: "-12 -30 24 30", "aria-hidden": "true"});
+          svg.style.transform = `rotate(${angle}deg)`;
+          svg.append(svgElement("path", {d: "M0 0C-3-5-10-10-10-18A10 10 0 1 1 10-18C10-10 3-5 0 0Z"}));
+          const label = svgElement("text", {x: 0, y: -18, dy: ".35em", transform: `rotate(${-angle} 0 -18)`});
+          label.textContent = letter(index);
+          svg.append(label);
+          marker.append(svg);
+        }
+        overlay.append(marker);
+      });
+      return overlay;
+    }
+
+    function updateCoordinateMarkers() {
+      const sample = current();
+      panel.querySelectorAll(".coordinate-marker").forEach(marker => {
+        const correct = showAnswer && marker.dataset.option === letter(sample.answer);
+        marker.classList.toggle("is-correct", correct);
+        const label = `Option ${marker.dataset.option}: (${marker.dataset.x}, ${marker.dataset.y})${correct ? ", correct answer" : ""}`;
+        marker.setAttribute("aria-label", label);
+        marker.title = label;
+      });
+    }
 
     function renderOptions() {
       const sample = current();
@@ -62,6 +121,7 @@
       $("reveal-answer").setAttribute("aria-pressed", String(showAnswer));
       const wrong = sample.predictions.filter(p => p.answer !== sample.answer).length;
       $("answer-feedback").textContent = showAnswer ? `${wrong} of 4 shown models missed this question.` : "The annotation is hidden. Which option would you choose?";
+      updateCoordinateMarkers();
     }
 
     function imageLink(sample, index) {
@@ -74,8 +134,42 @@
       img.src = sample.images[index];
       img.alt = `${sample.subset}: ${sample.title}. Image ${index + 1} of ${sample.images.length}.`;
       [img.width, img.height] = sample.sizes[index];
-      link.append(img);
+      if (coordinateChoices(sample).length) {
+        const [width, height] = sample.sizes[index];
+        const canvas = element("span", "coordinate-image");
+        canvas.style.setProperty("--image-ratio", width / height);
+        const detail = coordinateLayouts[sample.id]?.detail;
+        canvas.append(img, coordinateOverlay(sample, [0, 0, width, height], Boolean(detail)));
+        if (detail) {
+          const region = element("span", "coordinate-region");
+          region.setAttribute("aria-hidden", "true");
+          region.style.left = `${100 * detail[0] / width}%`;
+          region.style.top = `${100 * detail[1] / height}%`;
+          region.style.width = `${100 * detail[2] / width}%`;
+          region.style.height = `${100 * detail[3] / height}%`;
+          canvas.append(region);
+        }
+        link.append(canvas);
+      } else link.append(img);
       return link;
+    }
+
+    function coordinateDetail(sample) {
+      const bounds = coordinateLayouts[sample.id]?.detail;
+      if (!bounds) return null;
+      const figure = element("figure", "coordinate-detail");
+      const link = element("a");
+      link.href = sample.images[0];
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.setAttribute("aria-label", `Open the full ${sample.subset} screenshot`);
+      const canvas = element("span", "coordinate-image");
+      const svg = svgElement("svg", {viewBox: bounds.join(" "), role: "img", "aria-label": "Magnified coordinate targets from the original screenshot", class: "coordinate-crop"});
+      svg.append(svgElement("image", {href: sample.images[0], width: sample.sizes[0][0], height: sample.sizes[0][1]}));
+      canvas.append(svg, coordinateOverlay(sample, bounds));
+      link.append(canvas);
+      figure.append(link, element("figcaption", "image-label", "Target detail · magnified from the screenshot above"));
+      return figure;
     }
 
     function renderMedia(sample) {
@@ -112,6 +206,8 @@
           if (sample.images.length > 1) figure.append(element("figcaption", "image-label", `Image ${index + 1}`));
           media.append(figure);
         });
+        const detail = coordinateDetail(sample);
+        if (detail) media.append(detail);
       } else {
         let imageIndex = 0;
         const stage = element("div", "gallery-stage");
@@ -151,9 +247,9 @@
         update();
       }
       const size = sample.sizes[0];
-      const coords = sample.options.some(o => /\[\s*\d+(?:\.\d+)?\s*,/.test(o));
+      const coords = coordinateChoices(sample).length;
       $("media-caption").textContent = coords
-        ? `Original image: ${size[0]} × ${size[1]} px. Choice coordinates use (x, y) in original-image pixels.`
+        ? `Pins label coordinate choices in the original ${size[0]} × ${size[1]} px image (x, y). Green marks the correct choice when revealed.`
         : `${sample.images.length === 1 ? "Original dataset image" : `${sample.images.length} images in their original order`} · Select an image to enlarge`;
     }
 
