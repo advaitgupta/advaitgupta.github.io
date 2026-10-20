@@ -6,14 +6,14 @@
   <meta name="description" content="AgentVQA: 1,000 human-verified questions across 23 datasets and five agentic domains. Explore the benchmark, examples, and research findings.">
   <meta name="theme-color" content="#206feb">
   <meta property="og:title" content="AgentVQA — A Unified Benchmark for Agentic Visual Understanding">
-  <meta property="og:description" content="Can vision-language models understand the world well enough to act? 1,000 questions. 23 datasets. Five agentic domains.">
+  <meta property="og:description" content="A benchmark of 1,000 human-verified questions across 23 datasets and five agentic domains.">
   <meta property="og:image" content="https://advaitgupta.github.io/agentvqa/assets/overview.png">
   <meta property="og:url" content="https://advaitgupta.github.io/agentvqa/">
   <meta name="twitter:card" content="summary_large_image">
   <title>AgentVQA — Agentic Visual Understanding</title>
   <link rel="canonical" href="https://advaitgupta.github.io/agentvqa/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=20261019">
   <script defer src="data.js?v=2"></script>
   <script defer src="site.js?v=2"></script>
 </head>
@@ -27,17 +27,16 @@
   </header>
   <main id="main">
     <section class="hero section-shell" aria-labelledby="title">
-      <h1 id="title">Agent<span>VQA</span></h1>
+      <h1 id="title">AgentVQA</h1>
       <p class="tagline">A Unified Benchmark for<br>Agentic Visual Understanding</p>
-      <p class="hero-description">Understanding a scene is only the beginning.<br class="desktop-break"> Can a model understand it well enough to <em>act</em>?</p>
+      <p class="authors"><span class="author-name">Advait Gupta<sup>1</sup></span><span>·</span> <span class="author-name">Sachin Konan<sup>2</sup></span><span>·</span> <span class="author-name">Gabriel Sarch<sup>2*</sup></span><span>·</span> <span class="author-name">Zhuang Liu<sup>2*†</sup></span></p>
+      <p class="affiliations"><sup>1</sup> University of Maryland, College Park <span>·</span> <sup>2</sup> Princeton University</p>
+      <p class="author-note">* Equal advising &nbsp; † Corresponding author</p>
       <div class="project-links" aria-label="Project resources">
         <a class="button primary" href="https://openreview.net/pdf?id=MQinK5xoYM"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M8 12h8M8 16h6"/></svg>Paper</a>
         <a class="button" href="https://github.com/advaitgupta/AgentVQA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg>Code</a>
         <a class="button" href="https://huggingface.co/datasets/AgentVQA/AgentVQA"><img src="assets/models/huggingface.svg" width="20" height="20" alt=""> Dataset</a>
       </div>
-      <p class="authors">Advait Gupta<sup>1</sup><span>·</span> Sachin Konan<sup>2</sup><span>·</span> Gabriel Sarch<sup>2*</sup><span>·</span> Zhuang Liu<sup>2*†</sup></p>
-      <p class="affiliations"><sup>1</sup> University of Maryland, College Park <span>·</span> <sup>2</sup> Princeton University</p>
-      <p class="author-note">* Equal advising &nbsp; † Corresponding author</p>
       <div class="stats-rail" role="region" tabindex="0" aria-label="Benchmark statistics">
         <div><strong>1,000</strong><span>human-verified questions</span></div>
         <div><strong>23</strong><span>source datasets</span></div>
@@ -48,22 +47,18 @@
     </section>
 
     <section class="section-shell section-block overview-section" aria-labelledby="overview-title">
-      <div class="section-heading"><p class="eyebrow">The benchmark</p><h2 id="overview-title">One benchmark.<br>Five agentic worlds.</h2></div>
-      <div class="overview-grid">
-        <div class="overview-copy">
-          <p>AgentVQA evaluates the visual understanding needed for goal-directed interaction: locating a button, interpreting an action, tracking a game state, or planning a route.</p>
-          <p>We bring together 23 datasets in a common multiple-choice format. Single images, image sequences, and videos preserve the original scenario, with episode goals and action histories where available.</p>
-          <p>Every domain contributes 200 questions, enabling both cross-domain comparison and a closer look at each model’s strengths and limitations.</p>
-          <div class="modality-tags"><span>Single images</span><span>Multiple images</span><span>Videos</span></div>
-        </div>
-        <figure class="figure-shell distribution-figure"><a href="assets/distribution.png" target="_blank" rel="noopener"><img src="assets/distribution.png" width="2400" height="1453" alt="AgentVQA's five domains and 23 datasets, with 50 questions per Web Agents and Games subset and 40 per remaining subset." loading="lazy"></a><figcaption>Balanced coverage across five domains. Figure 2 from the paper.</figcaption></figure>
+      <div class="section-heading"><h2 id="overview-title">About AgentVQA</h2></div>
+      <div class="overview-copy">
+        <p>AgentVQA evaluates the visual understanding needed for goal-directed interaction: locating a button, interpreting an action, tracking a game state, or planning a route. It brings together 23 datasets across Web Agents, Egocentric Videos, Games, Spatial Planning, and Robotics in a common multiple-choice format.</p>
+        <p>The benchmark contains 1,000 human-verified questions, with 200 per domain. Questions use single images, image sequences, or videos, with episode goals and action histories where available. Across 22 evaluated model configurations, the best overall accuracy is <strong>58.5%</strong>, achieved by Gemini 3.7 Flash.</p>
       </div>
+      <figure class="figure-shell distribution-figure"><a href="assets/distribution.png" target="_blank" rel="noopener"><img src="assets/distribution.png" width="2400" height="1453" alt="AgentVQA's five domains and 23 datasets, with 50 questions per Web Agents and Games subset and 40 per remaining subset." loading="lazy"></a><figcaption>The five domains and 23 source datasets in AgentVQA.</figcaption></figure>
       <details class="paper-details"><summary>See task examples from the paper <span aria-hidden="true">+</span></summary><figure><a href="assets/overview.png" target="_blank" rel="noopener"><img src="assets/overview.png" width="2400" height="1378" alt="Paper examples of GUI grounding, video understanding, robotics, gameplay, and spatial planning." loading="lazy"></a><figcaption>Figure 1. Representative tasks across the AgentVQA benchmark.</figcaption></figure></details>
     </section>
 
     <section class="examples-section" aria-labelledby="examples-title">
       <div class="section-shell section-block">
-        <div class="section-heading heading-row"><div><p class="eyebrow">Inside AgentVQA</p><h2 id="examples-title">See the task.<br>Follow the decision.</h2></div><p>23 challenging examples, handpicked from all 23 datasets. The highlighted choice is the annotated answer; model symbols show their predictions.</p></div>
+        <div class="section-heading"><h2 id="examples-title">Examples</h2><p>One example from each of the 23 datasets. The correct answer is highlighted; model symbols indicate their predictions.</p></div>
         <div id="domain-controls" class="domain-controls" role="tablist" aria-label="Choose an example domain"></div>
         <div class="example-shell" id="example-browser" role="tabpanel" tabindex="0">
           <div class="example-topline"><div><span class="sample-subset" id="sample-subset"></span><span class="sample-index" id="sample-index"></span></div><div class="sample-navigation"><button id="previous-sample" class="icon-button" type="button" aria-label="Previous example">←</button><span id="sample-position"></span><button id="next-sample" class="icon-button" type="button" aria-label="Next example">→</button></div></div>
@@ -75,18 +70,18 @@
     </section>
 
     <section class="section-shell section-block" aria-labelledby="curation-title">
-      <div class="section-heading heading-row"><div><p class="eyebrow">Dataset curation</p><h2 id="curation-title">Model-assisted.<br>Human-verified.</h2></div><p>Models help propose difficult distractors and flag potential issues. People decide what stays—and repair what needs to change.</p></div>
+      <div class="section-heading"><h2 id="curation-title">Dataset curation</h2><p>Candidate questions are converted to multiple choice, screened with VLM assistance, and manually reviewed for correctness, clarity, difficulty, and distractor quality.</p></div>
       <figure class="figure-shell pipeline-figure"><a href="assets/curation.png" target="_blank" rel="noopener"><img src="assets/curation.png" width="2400" height="651" alt="Five stages: candidate collection, MCQ construction, VLM-assisted screening, manual curation and repair, and human verification and benchmark assembly." loading="lazy"></a><figcaption>The five-stage curation pipeline. Figure 3 from the paper.</figcaption></figure>
-      <div class="curation-note"><strong>22<span>%</span></strong><div><h3>of initial candidates make the final benchmark</h3><p>Manual review checks correctness, clarity, difficulty, and distractors. Each retained question is verified to have exactly one correct answer.</p></div></div>
+      <p class="curation-note">The final benchmark retains 22% of initial candidates. Each retained question is verified to have exactly one correct answer.</p>
     </section>
 
     <section class="findings-section" aria-labelledby="findings-title"><div class="section-shell section-block">
-      <div class="section-heading"><p class="eyebrow">Headline findings</p><h2 id="findings-title">Seeing is still the bottleneck.</h2><p>AgentVQA exposes the gap between recognizing visual content and understanding it well enough for agentic decisions.</p></div>
-      <div class="findings-grid">
-        <article><p class="finding-number">58.5<span>%</span></p><h3>Best reported accuracy</h3><p>Gemini 3.7 Flash leads overall among 22 model configurations. No single model leads every domain.</p></article>
-        <article><p class="finding-number"><span>ρ = </span>0.895</p><h3>Agreement with online evaluation</h3><p>AgentVQA Spatial Planning tracks SpatialWorld Physical rankings across 12 shared models.</p></article>
-        <article><div class="finding-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><h3>Failures begin before planning</h3><p>Error analysis points to grounding, motion perception, and spatial-state understanding—not just high-level reasoning.</p></article>
-      </div>
+      <div class="section-heading"><h2 id="findings-title">Key findings</h2></div>
+      <ul class="findings-list">
+        <li><strong>Model performance.</strong> Gemini 3.7 Flash achieves the highest overall accuracy at 58.5%. No single model leads every domain.</li>
+        <li><strong>Online correlation.</strong> AgentVQA Spatial Planning and SpatialWorld Physical rankings have a Spearman correlation of ρ = 0.895 across 12 shared models.</li>
+        <li><strong>Error modes.</strong> Grounding, motion perception, and spatial-state understanding account for prominent failures in the paper’s error analysis.</li>
+      </ul>
     </div></section>
 
     <section class="section-shell section-block citation-section" aria-labelledby="citation-title">
@@ -99,6 +94,6 @@
 }</pre></div>
     </section>
   </main>
-  <footer class="site-footer section-shell"><span class="brand">AgentVQA</span><p>Understand the world before acting in it.<br>Model icons: <a href="https://github.com/lobehub/lobe-icons">Lobe Icons</a> · <a href="assets/models/LICENSE.txt">MIT license</a></p><a href="https://huggingface.co/datasets/AgentVQA/AgentVQA">Data &amp; source-dataset attribution ↗</a></footer>
+  <footer class="site-footer section-shell"><span class="brand">AgentVQA</span><p>Model icons: <a href="https://github.com/lobehub/lobe-icons">Lobe Icons</a> · <a href="assets/models/LICENSE.txt">MIT license</a></p><a href="https://huggingface.co/datasets/AgentVQA/AgentVQA">Data &amp; source-dataset attribution ↗</a></footer>
 </body>
 </html>
