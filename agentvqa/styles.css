@@ -18,7 +18,8 @@ h1, h2, h3, p, figure { margin: 0; }
 h1, h2, h3 { line-height: 1.3; font-weight: 500; }
 h1, h2, h3, figcaption { text-wrap: balance; }
 p, li, .option-text { text-wrap: pretty; }
-.section-heading > p, .results-hero > p, .curation-note, .findings-list li, .correlation-intro p, .online-heading p, .ablation-grid article > p { text-wrap: balance; }
+.results-hero > p, .correlation-intro p, .online-heading p, .ablation-grid article > p { text-wrap: balance; }
+.section-heading > p, .curation-note, .findings-list li { text-wrap: wrap; }
 .text-tail { display: inline-block; max-width: 100%; text-wrap: balance; }
 h2 { font-size: 31px; }
 h3 { font-size: 22px; }
@@ -62,7 +63,7 @@ nav a[aria-current="page"] { color: var(--blue-dark); border-bottom: 1px solid v
 .stats-rail span { margin-top: 5px; font-size: 11px; color: var(--muted); }
 .accuracy-stat strong { color: var(--blue); }
 .accuracy-stat small { margin-top: 3px; font-size: 10px; color: var(--muted); }
-.section-heading { max-width: 880px; margin: 0 auto 28px; }
+.section-heading { margin: 0 0 28px; }
 .section-heading h2 { text-align: center; }
 .section-heading > p { margin-top: 16px; }
 .overview-section { border-top: 0; }
@@ -151,8 +152,8 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: 12px; line-height
 .game-context summary { cursor: pointer; font-size: 12px; color: var(--domain-ink); }
 .game-context p { margin-top: 10px; font-size: 12px; color: var(--muted); white-space: pre-wrap; }
 .small-note { margin-top: 16px; color: var(--muted); font-size: 12px; line-height: 1.6; }
-.curation-note { max-width: 880px; margin: 24px auto 0; }
-.findings-list { max-width: 880px; margin: 0 auto; padding-left: 22px; }
+.curation-note { margin: 24px 0 0; }
+.findings-list { margin: 0; padding-left: 22px; }
 .findings-list li + li { margin-top: 13px; }
 .citation-shell { position: relative; padding: 45px 22px 22px; background: var(--pale); border-radius: 3px; }
 .citation-shell pre { margin: 0; overflow-x: auto; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 12px; line-height: 1.8; }

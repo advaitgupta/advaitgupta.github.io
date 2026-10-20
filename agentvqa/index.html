@@ -13,7 +13,7 @@
   <title>AgentVQA — Agentic Visual Understanding</title>
   <link rel="canonical" href="https://advaitgupta.github.io/agentvqa/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261020">
+  <link rel="stylesheet" href="styles.css?v=20261020-3">
   <script defer src="data.js?v=20261020-2"></script>
   <script defer src="site.js?v=20261020-2"></script>
 </head>
@@ -57,7 +57,7 @@
 
     <section class="examples-section" aria-labelledby="examples-title">
       <div class="section-shell section-block">
-        <div class="section-heading"><h2 id="examples-title">Examples</h2><p>One example from each of the 23 datasets. The correct answer is highlighted; model symbols indicate their predictions.</p></div>
+        <div class="section-heading"><h2 id="examples-title">Examples</h2><p>One example per dataset. Highlights show correct answers; icons show predictions.</p></div>
         <div id="domain-controls" class="domain-controls" role="tablist" aria-label="Choose an example domain"></div>
         <div class="example-shell" id="example-browser" role="tabpanel" tabindex="0">
           <div class="example-topline"><div><span class="sample-subset" id="sample-subset"></span><span class="sample-index" id="sample-index"></span></div><div class="sample-navigation"><button id="previous-sample" class="icon-button" type="button" aria-label="Previous example">←</button><span id="sample-position"></span><button id="next-sample" class="icon-button" type="button" aria-label="Next example">→</button></div></div>
@@ -69,7 +69,7 @@
     </section>
 
     <section class="section-shell section-block" aria-labelledby="curation-title">
-      <div class="section-heading"><h2 id="curation-title">Dataset curation</h2><p>Candidate questions are converted to multiple choice, screened with VLM assistance, and manually reviewed for correctness, clarity, difficulty, and distractor quality.</p></div>
+      <div class="section-heading"><h2 id="curation-title">Dataset curation</h2><p>Questions undergo MCQ conversion, VLM screening, and manual checks for correctness, clarity, difficulty, and distractor quality.</p></div>
       <figure class="figure-shell pipeline-figure"><a href="assets/curation.png" target="_blank" rel="noopener"><img src="assets/curation.png" width="2400" height="651" alt="Five stages: candidate collection, MCQ construction, VLM-assisted screening, manual curation and repair, and human verification and benchmark assembly." loading="lazy"></a><figcaption>The five-stage curation pipeline. Figure 3 from the paper.</figcaption></figure>
       <p class="curation-note">The final benchmark retains 22% of initial candidates. Each retained question is verified to have exactly one correct answer.</p>
     </section>
@@ -78,8 +78,8 @@
       <div class="section-heading"><h2 id="findings-title">Key findings</h2></div>
       <ul class="findings-list">
         <li><strong>Model performance.</strong> Gemini 3.7 Flash achieves the highest overall accuracy at 58.5%. No single model leads every domain.</li>
-        <li><strong>Online correlation.</strong> AgentVQA Spatial Planning and SpatialWorld Physical rankings have a Spearman correlation of ρ = 0.895 across 12 shared models.</li>
-        <li><strong>Error modes.</strong> Grounding, motion perception, and spatial-state understanding account for prominent failures in the paper’s error analysis.</li>
+        <li><strong>Online correlation.</strong> AgentVQA Spatial Planning vs. SpatialWorld Physical: Spearman ρ = 0.895 across 12 shared models.</li>
+        <li><strong>Error modes.</strong> Grounding, motion perception, and spatial-state understanding are prominent failure categories.</li>
       </ul>
     </div></section>
 
