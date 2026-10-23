@@ -40,53 +40,125 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
-.paper-box {
+/* Compact publication entries; venue blue matches dangne.github.io. */
+.publications {
+    --publication-blue: #0076df;
+}
+
+.publication {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 7.25em;
+    grid-template-areas: "body venue";
+    align-items: start;
+    gap: 1.25em;
+    margin: 1.5em 0;
+}
+
+.publication-venue {
+    grid-area: venue;
+    padding: 0.25em 0.4em;
+    background: var(--publication-blue);
+    color: #fff;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.publication-venue-note {
+    font-weight: 400;
+}
+
+.publication-body {
+    grid-area: body;
+    min-width: 0;
+}
+
+.page__content .publication-title {
+    margin: 0 0 0.3em;
+    font-size: 1em;
+    line-height: 1.5;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--publication-blue);
+        }
+    }
+}
+
+.page__content .publication-authors {
+    margin: 0 0 0.55em;
+    line-height: 1.5;
+}
+
+.publication-links {
     display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-direction: row;
     flex-wrap: wrap;
-    border-bottom: 1px #efefef solid;
-    padding: 2em 0 2em 0;
-    
+    gap: 0.5em;
+}
 
-    .paper-box-image{
-        justify-content: center;
-        display: flex;
-        width: 20%;
-        order: 2;
-        vertical-align: middle;
-        img {
-            max-width: 40px;
-            box-shadow: 3px 3px 6px #888;
-            object-fit: cover;
-        }
-    }
-    
-    .paper-box-text{
-        max-width: 90%;
-        order: 1;
-        margin-left: 1em;
-    }
-    
-    @include breakpoint($medium) {
-        .paper-box-image{
-            justify-content: left;
-            min-width: auto;
-            max-width: 80px;
-            order: 1;
-        }
-        
-        .paper-box-text{
-            justify-content: left;
-            padding-left: 0em;
-            max-width: 80%;
-            order: 2;
-        }
+.page__content .publication-button {
+    display: inline-block;
+    margin: 0;
+    padding: 0.25em 1em;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.8em;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 
+    &:hover,
+    &[aria-expanded="true"] {
+        color: var(--publication-blue);
+        border-color: var(--publication-blue);
+        text-decoration: none;
     }
 
+    &:focus-visible {
+        outline: 2px solid var(--publication-blue);
+        outline-offset: 3px;
+    }
+}
 
+.publication-abstract {
+    margin-top: 0.75em;
+    padding: 0.75em;
+    border: 1px dashed currentColor;
+    font-size: 0.9em;
+    line-height: 1.5;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.page__content .publication-button[hidden],
+.publication-abstract[hidden] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .publication {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "venue" "body";
+        gap: 0.6em;
+    }
+
+    .publication-venue {
+        width: 9.0625em;
+        justify-self: end;
+    }
 }
 
 $scroll_offset : 2em;
@@ -97,16 +169,4 @@ h1:before, .anchor:before {
     width: 0; 
     height: $scroll_offset; 
     margin-top: -$scroll_offset;
-}
-
-.badge {
-    display: inline-block; 
-    padding: 0.3em 0.8em; 
-    color: white;
-    background-color: #00369f;
-    font-size: 0.8em;
-    border-radius: 5px; 
-    text-align: center;
-    margin-bottom: 0.5em; 
-    vertical-align: middle; 
 }
