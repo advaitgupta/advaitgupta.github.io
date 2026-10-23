@@ -47,8 +47,8 @@
 
 .publication {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 7.25em;
-    grid-template-areas: "body venue";
+    grid-template-columns: 7.25em minmax(0, 1fr);
+    grid-template-areas: "venue body";
     align-items: start;
     gap: 1.25em;
     margin: 1.5em 0;
@@ -138,6 +138,10 @@
     font-size: 0.9em;
     line-height: 1.5;
 
+    a {
+        overflow-wrap: anywhere;
+    }
+
     p:last-child {
         margin-bottom: 0;
     }
@@ -157,7 +161,7 @@
 
     .publication-venue {
         width: 9.0625em;
-        justify-self: end;
+        justify-self: start;
     }
 }
 

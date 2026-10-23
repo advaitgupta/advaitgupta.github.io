@@ -9,9 +9,6 @@ main:
   - title: "Publications"
     url: "/#-publications"
 
-  - title: "Personal Projects"
-    url: "/#-personal-projects"
-
   - title: "Honors and Awards"
     url: "/#-honors-and-awards"    
 
@@ -23,3 +20,6 @@ main:
 
   - title: "Services"
     url: "/#-services"
+
+  - title: "Personal Projects"
+    url: "/#-personal-projects"
