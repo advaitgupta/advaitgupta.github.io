@@ -49,7 +49,7 @@
     display: grid;
     grid-template-columns: 7.25em minmax(0, 1fr);
     grid-template-areas: "venue body";
-    align-items: start;
+    align-items: baseline;
     gap: 1.25em;
     margin: 1.5em 0;
 }
