@@ -17,12 +17,17 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi! 👋 I am currently pursuing an M.S. in Machine Learning at the University of Maryland, College Park, and am part of [Prof. Tianyi Zhou](https://tianyizhou.github.io)'s research lab. I also collaborate with [Prof. Zhuang Liu](https://liuzhuang13.github.io) at Princeton University and [Prof. Ruohan Gao](https://ruohangao.github.io) at the University of Maryland. I have a diverse range of research experience spanning neurosymbolic reasoning for agentic planning, multimodal visual understanding, emergent architectural properties of LLMs, and classical CV and genAI systems. My recent research focusses on cost-sensitive, adaptive agents by combining LLM-driven hierarchical planning with classical A* search and enabling them to learn by mining reusable tool sequences via in-context reinforcement learning and inductive reasoning. My work also extends to embodied agents and their evaluation for agentic visual understanding. Previously, I earned my B.Tech degree in Computer Science from Rajiv Gandhi Institute of Petroleum Technology where I researched on applying computer vision in healthcare, construction and urban analytics.
+Hi! 👋 I'm a first-year Ph.D. student in Computer Science at the University of California, Riverside, advised by [Prof. Amit K. Roy-Chowdhury](https://vcg.ece.ucr.edu/amit). Previously, I pursued an M.S. in Machine Learning at the University of Maryland, College Park, where I worked with [Prof. Tianyi Zhou](https://tianyizhou.github.io). I also collaborate with Prof. [Prof. Zhuang Liu](https://liuzhuang13.github.io) at Princeton University and [Prof. Ruohan Gao](https://ruohangao.github.io) at the University of Maryland. I received my B.Tech in Computer Science from Rajiv Gandhi Institute of Petroleum Technology.
+
+My research focuses on visual agents, multimodal reasoning, and efficient decision-making, with the broader goal of building intelligent systems that can perceive, reason, plan, and act efficiently in complex environments. My work spans neurosymbolic planning and learning for tool-using agents, agentic visual understanding and evaluation, and generative AI for efficient image editing and video generation. I also work on reinforcement learning for communication-efficient cooperative perception and collaborative decision-making, with broader interests in how agents learn from and interact with their environments. Across these directions, I am particularly interested in making agents more adaptive, reliable, and computationally efficient.
 
 I am always eager to connect with fellow researchers. If my work aligns with your interests, please feel free to reach out.
 
 # 🔥 News
-- *2026.08*: 🎉🎉 One first-author paper ([CoSTA*](https://arxiv.org/abs/2503.10613)) has been accepted by EMNLP 2026 (Findings). 
+- *2026.10*:  We release [AgentVQA: A Unified Benchmark for Agentic Visual Understanding](https://arxiv.org/abs/2610.31494) with the [Official Website](https://zlab-princeton.github.io/AgentVQA/).
+- *2026.09*: Joined University of California, Riverside as a Ph.D. Candidate in Computer Science.
+- *2026.08*: 🎉🎉 One first-author paper ([CoSTA*](https://arxiv.org/abs/2503.10613)) has been accepted by EMNLP 2026 (Findings).
+- *2026.05*: Graduated with a Master of Science in Machine Learning from UMD.
 - *2026.01*: 🎉🎉 One first-author paper ([FaSTA*](https://arxiv.org/abs/2506.20911)) has been accepted by ICLR 2026. 
 - *2025.06*: We release [FaSTA*: Fast-Slow Toolpath Agent with Subroutine Mining for Efficient Multi-turn Image Editing](https://arxiv.org/abs/2506.20911) with the [Official Codebase](https://github.com/tianyi-lab/FaSTAR). 
 - *2025.03*: We release [CoSTA*: Cost-Sensitive Toolpath Agent for Multi-turn Image Editing](https://arxiv.org/abs/2503.10613) with the [Official Codebase](https://github.com/tianyi-lab/CoSTAR), [Live Demo](https://storage.googleapis.com/costa-frontend/index.html) and [Benchmark Dataset](https://huggingface.co/datasets/advaitgupta/CoSTAR). 
@@ -34,11 +39,11 @@ I am always eager to connect with fellow researchers. If my work aligns with you
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Under review</div></div></div>
 <div class='paper-box-text' markdown="1">
 
-[M<sup>3</sup>-EDIT: An Agentic Framework for Multi-modal, Multi-reference, Multi-task Editing](https://drive.google.com/file/d/1tkoE_fvs1OB2poH0k4CJn4fzAiAtB7NG/view?usp=sharing) 
+[AgentVQA: A Unified Benchmark for Agentic Visual Understanding](https://arxiv.org/abs/2610.31494) 
 
-**Advait Gupta**, Rishie Raj, Ruohan Gao
+**Advait Gupta**, Sachin Konan, Tom Yin, Gabriel Sarch, Zhuang Liu
 
-**M<sup>3</sup>-EDIT** is an agentic framework for multi-modal, multi-reference, multi-task editing that addresses the critical grounding failures of existing agents, which struggle to interpret complex, cross-modal instructions. To solve this, M<sup>3</sup>-EDIT employs a novel two-stage architecture that strictly decouples perception from action: an initial Analysis & Grounding stage constructs a verified, machine-readable map of all inputs called the Unified Editing Canvas (UEC), and a subsequent Manipulation & Execution stage operates on this fully-grounded canvas to generate and execute a precise, step-by-step editing plan. This design enables robust, compositional workflows and allows for granular, step-by-step quality control, a crucial advantage over monolithic models. The framework's effectiveness is validated on M³-BENCH, our new benchmark of 110 complex, multi-reference tasks designed to test the limits of agentic multimodal reasoning.
+**AgentVQA** is a unified offline benchmark for evaluating agentic visual understanding in Vision-Language Models (VLMs) without costly interactive evaluations. It consists of **1,000 challenging, human-verified questions from 23 datasets** across five domains: Web Agents, Robotics, Egocentric Videos, Games, and Spatial Planning. Evaluating 22 VLMs, we find that the best model achieves just **58.5% accuracy**, revealing substantial gaps in agentic visual understanding. We further show that offline model rankings correlate strongly with online agent evaluations, supporting AgentVQA as a scalable evaluation framework.
 
 </div>
 </div>
@@ -46,11 +51,11 @@ I am always eager to connect with fellow researchers. If my work aligns with you
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Under review</div></div></div>
 <div class='paper-box-text' markdown="1">
 
-[AgentVQA: A Unified Benchmark for Agentic Visual Understanding](https://drive.google.com/file/d/1gT1MkXptga2njI7mVKMo42Q51bjuNink/view?usp=sharing) 
+[M<sup>3</sup>-EDIT: An Agentic Framework for Multi-modal, Multi-reference, Multi-task Editing](https://drive.google.com/file/d/1tkoE_fvs1OB2poH0k4CJn4fzAiAtB7NG/view?usp=sharing) 
 
-**Advait Gupta**, Sachin Konan, Gabriel Sarch, Zhuang Liu
+**Advait Gupta**, Rishie Raj
 
-AgentVQA is a unified benchmark for agentic visual understanding that systematically evaluates the agentic capabilities of Vision-Language Models (VLMs). It addresses the need for a comprehensive evaluation framework by unifying 14 challenging datasets across five critical domains: Web Agents, Robotics, Egocentric Videos, Games, and Spatial Understanding. To ensure standardized and scalable analysis, AgentVQA reformulates diverse and dynamic tasks, such as web navigation and gameplay, into a unified multiple-choice question (MCQ) format. The benchmark is designed to be challenging, featuring "hard negatives" that are generated through a VLM-assisted pipeline and manually reviewed to ensure they are plausible yet incorrect, thereby testing for fine-grained understanding.
+**M<sup>3</sup>-EDIT** is an agentic framework for multimodal, multi-reference, and multi-task editing that separates perception from execution. It first constructs a verified Unified Editing Canvas (UEC) to ground inputs and instructions, then generates and executes a step-by-step editing plan with granular quality control. This approach enables reliable, compositional editing and is evaluated on **M³-BENCH**, a new benchmark of 110 challenging multi-reference tasks.
 
 </div>
 </div>
