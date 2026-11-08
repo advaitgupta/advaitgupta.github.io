@@ -95,6 +95,7 @@ export async function responsePdf(payload, progress = () => {}) {
   p.heading('Human evaluation · Response report', 17);
   p.text(`Participant code: ${payload.session.participant_code}\nSession ID: ${payload.session.id}\nSelected set: ${payload.session.set_size} questions\nAnswered: ${payload.summary.answered}\nUnanswered: ${payload.summary.unanswered}\nFlagged: ${payload.summary.flagged}\nPrevious exposure: ${payload.session.prior_exposure}\nExported: ${payload.exported_at}`);
   p.text('This report records participant responses, not correct answers. Original images are represented by previews and media references; complete videos are referenced, not embedded. Exact source fields and interaction records are preserved in the accompanying JSON.');
+  if (payload.retired_responses?.length) p.text('This session was updated after a question replacement. Retired responses are archived separately in the JSON and are not included in the selected-question totals.');
   p.heading('Protocol and provenance', 13);
   p.text(`Study: ${payload.study.study_id}\nCatalog SHA-256: ${payload.study.catalog_sha256}\nDataset: ${payload.study.dataset_repository}\nDataset revision: ${payload.study.dataset_revision}\nEvaluator revision: ${payload.study.evaluation_revision}\n${payload.study.human_media_protocol}`, 9);
   for (let i = 0; i < payload.samples.length; i++) {

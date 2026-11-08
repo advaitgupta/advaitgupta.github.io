@@ -1,7 +1,7 @@
 {
   "metadata": {
     "schema_version": 1,
-    "study_id": "agentvqa-human-v1",
+    "study_id": "agentvqa-human-v1.1",
     "selection_seed": "agentvqa-human-v1",
     "dataset_repository": "AgentVQA/AgentVQA",
     "dataset_revision": "29224a4605b0020fb5fca35a8ec93b6300699c85",
@@ -9,7 +9,7 @@
     "evaluation_revision": "f3f353d887b1b2c5e683dd983ff2da379e3b82a7",
     "split": "train",
     "source_id_policy": "Dataset subset and zero-based row index at the pinned revision; the released data has no original sample-ID column.",
-    "selection_method": "Per subset, order row indices by SHA-256 of seed|subset|row_index. Select the first 10 (four-dataset domain) or 8 (five-dataset domain). The first half of each subset is the 100-question set. No labels or model outputs are used.",
+    "selection_method": "Per subset, order row indices by SHA-256 of seed|subset|row_index. Select the first 10 (four-dataset domain) or 8 (five-dataset domain). The first half of each subset is the 100-question set. No labels or model outputs are used. Version 1.1 replaces AitW:33 with AitW:7 in the same position in both sets; all other selected records are unchanged.",
     "domains": [
       {
         "name": "Web Agents",
@@ -67,7 +67,7 @@
         "parquet_sha256": "688e328affcd25cf1d11a7384627dbd385a738410f509d28060996afde9a446f",
         "source_rows": 50,
         "rows_200": [
-          33,
+          7,
           14,
           10,
           11,
@@ -79,7 +79,7 @@
           40
         ],
         "rows_100": [
-          33,
+          7,
           14,
           10,
           11,
@@ -593,25 +593,35 @@
       }
     ],
     "human_media_protocol": "Original images in source order; full video with playback and seeking; user-controlled image zoom and neutral coordinate overlays. This is a visually assisted human condition, not an exact reproduction of each API provider's resizing, normalization, frame sampling, or image stitching. MarioQA browser playback uses lossless VP9 copies with identical decoded frames; original media references are retained.",
-    "catalog_sha256": "d5a95423c254dad24cde9bbbc98ee68ed530dd653975286aa71dfca054037d90"
+    "selection_replacements": [
+      {
+        "previous_catalog_sha256": "d5a95423c254dad24cde9bbbc98ee68ed530dd653975286aa71dfca054037d90",
+        "removed_id": "AitW:33",
+        "added_id": "AitW:7",
+        "removed_option_count": 4,
+        "in_100": true,
+        "reason": "User-requested replacement of the Five Guys item with the next unused AitW row in the original seeded ordering."
+      }
+    ],
+    "catalog_sha256": "de5d7f2b12e2f6982ff31f41157d1d079421146b1d79dd8faa7b1018097a1be5"
   },
   "samples": [
     {
-      "id": "AitW:33",
+      "id": "AitW:7",
       "dataset": "AitW",
       "domain": "Web Agents",
       "evaluator_domain": "Web Agents",
-      "source_row_index": 33,
+      "source_row_index": 7,
       "split": "train",
       "in_100": true,
       "question": "Based on the goal and screen, what is the precise next action to perform?\n\nThe point should be on the object perfectly and not even slighly off of it if the correct answer is choosing a coordinate.",
-      "episode_goal": "What's on the menu at Five Guys?",
-      "action_history": "",
+      "episode_goal": "Open privacy settings",
+      "action_history": "Step 0: swiped Up while on the home screen\nStep 1: tapped at Settings app icon",
       "options": [
-        "Swipe: Swipe Down",
-        "Tap: [360, 1315]",
-        "Tap: [545, 1170]",
-        "None of the above"
+        "Type: 'Privacy Settings'",
+        "Swipe: Swipe Up",
+        "Tap: [206, 570]",
+        "Swipe: Swipe Down"
       ],
       "option_source_indices": [
         0,
@@ -620,56 +630,47 @@
         3
       ],
       "source_options": [
-        "Swipe: Swipe Down",
-        "Tap: [360, 1315]",
-        "Tap: [545, 1170]",
-        "None of the above"
+        "Type: 'Privacy Settings'",
+        "Swipe: Swipe Up",
+        "Tap: [206, 570]",
+        "Swipe: Swipe Down"
       ],
       "images": [
         {
-          "url": "media/6276c1014926f5f698e18198a279d7b46c89509dbbe6972bf350fd249c63a9d1.png",
-          "preview_url": "media/6276c1014926f5f698e18198a279d7b46c89509dbbe6972bf350fd249c63a9d1.preview.jpg",
-          "sha256": "6276c1014926f5f698e18198a279d7b46c89509dbbe6972bf350fd249c63a9d1",
-          "width": 720,
-          "height": 1520,
+          "url": "media/5f3188ac224a1157a96a3acb3562fe09f3b350c1f6a7a233f1c8c672c740be72.png",
+          "preview_url": "media/5f3188ac224a1157a96a3acb3562fe09f3b350c1f6a7a233f1c8c672c740be72.preview.jpg",
+          "sha256": "5f3188ac224a1157a96a3acb3562fe09f3b350c1f6a7a233f1c8c672c740be72",
+          "width": 412,
+          "height": 732,
           "source_index": 0,
-          "source_path": "episode_9836837435576948503_step_0.png"
+          "source_path": "episode_4116793311770124015_step_2.png"
         }
       ],
       "video": null,
       "points": [
         {
-          "label": "B",
-          "option_index": 1,
-          "point_index": 0,
-          "x": 360.0,
-          "y": 1315.0,
-          "image_index": 0,
-          "in_bounds": true
-        },
-        {
           "label": "C",
           "option_index": 2,
           "point_index": 0,
-          "x": 545.0,
-          "y": 1170.0,
+          "x": 206.0,
+          "y": 570.0,
           "image_index": 0,
           "in_bounds": true
         }
       ],
       "coordinate_warnings": [],
-      "prompt": "Answer this AgentVQA multiple-choice question in the Web Agents domain.\n\nEpisode Goal:\nWhat's on the menu at Five Guys?\n\nQuestion:\nBased on the goal and screen, what is the precise next action to perform?\n\nThe point should be on the object perfectly and not even slighly off of it if the correct answer is choosing a coordinate.\n\nImage-point coordinates in the Options section are [x, y], absolute pixels of the supplied image, with origin at the top-left. The supplied image is 720 pixels wide and 1520 pixels high.\n\nImages are supplied in dataset order.\n\nOptions (use this list as authoritative):\nA. Swipe: Swipe Down\nB. Tap: [360, 1315]\nC. Tap: [545, 1170]\nD. None of the above\n\nReturn only the correct option label from A, B, C, D.",
+      "prompt": "Answer this AgentVQA multiple-choice question in the Web Agents domain.\n\nEpisode Goal:\nOpen privacy settings\n\nAction History:\nStep 0: swiped Up while on the home screen\nStep 1: tapped at Settings app icon\n\nQuestion:\nBased on the goal and screen, what is the precise next action to perform?\n\nThe point should be on the object perfectly and not even slighly off of it if the correct answer is choosing a coordinate.\n\nImage-point coordinates in the Options section are [x, y], absolute pixels of the supplied image, with origin at the top-left. The supplied image is 412 pixels wide and 732 pixels high.\n\nImages are supplied in dataset order.\n\nOptions (use this list as authoritative):\nA. Type: 'Privacy Settings'\nB. Swipe: Swipe Up\nC. Tap: [206, 570]\nD. Swipe: Swipe Down\n\nReturn only the correct option label from A, B, C, D.",
       "media_note": "Images are supplied in dataset order.",
       "source_fields": {
         "Question": "Based on the goal and screen, what is the precise next action to perform?\n\nThe point should be on the object perfectly and not even slighly off of it if the correct answer is choosing a coordinate.",
         "Options": [
-          "Swipe: Swipe Down",
-          "Tap: [360, 1315]",
-          "Tap: [545, 1170]",
-          "None of the above"
+          "Type: 'Privacy Settings'",
+          "Swipe: Swipe Up",
+          "Tap: [206, 570]",
+          "Swipe: Swipe Down"
         ],
-        "Action History": "",
-        "Episode Goal": "What's on the menu at Five Guys?"
+        "Action History": "Step 0: swiped Up while on the home screen\nStep 1: tapped at Settings app icon",
+        "Episode Goal": "Open privacy settings"
       }
     },
     {

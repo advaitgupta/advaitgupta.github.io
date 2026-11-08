@@ -1,4 +1,4 @@
-import { instructionsPdf, responsePdf } from './pdf.js?v=1';
+import { instructionsPdf, responsePdf } from './pdf.js?v=2';
 
 const $ = selector => document.querySelector(selector);
 const el = (tag, props = {}, children = []) => {
@@ -22,6 +22,29 @@ const currentSamples = () => catalog.samples.filter(sample => session.set_size =
 const sampleById = id => catalog.samples.find(s => s.id === id);
 const blankResponse = () => ({ choice: null, comment: '', flagged: false, visits: 0, visible_ms: 0, zoom_events: 0, video_events: 0, choice_changes: 0, media_errors: [], first_viewed_at: null, updated_at: null });
 const responseFor = id => session.responses[id] ||= blankResponse();
+const previousRevision = digest => (catalog.metadata.selection_replacements || []).find(r => r.previous_catalog_sha256 === digest);
+
+function cleanResponse(raw, optionCount, id) {
+  const letters = Array.from({length: optionCount}, (_, i) => String.fromCharCode(65 + i));
+  if (raw.choice !== null && !letters.includes(raw.choice)) throw new Error(`Invalid answer for ${id}.`);
+  const response = blankResponse();
+  Object.assign(response, {choice: raw.choice, comment: String(raw.comment || '').slice(0, 10000), flagged: !!raw.flagged, first_viewed_at: typeof raw.first_viewed_at === 'string' ? raw.first_viewed_at : null, updated_at: typeof raw.updated_at === 'string' ? raw.updated_at : null});
+  for (const name of ['visits', 'visible_ms', 'zoom_events', 'video_events', 'choice_changes']) response[name] = Number.isFinite(raw[name]) ? Math.max(0, raw[name]) : 0;
+  response.media_errors = Array.isArray(raw.media_errors) ? raw.media_errors.filter(e => typeof e?.message === 'string').slice(0, 50) : [];
+  return response;
+}
+
+function migrateSession(stored, revision) {
+  const migrated = structuredClone(stored);
+  migrated.retired_responses ||= [];
+  if (migrated.responses[revision.removed_id]) migrated.retired_responses.push({id: revision.removed_id, catalog_sha256: revision.previous_catalog_sha256, response: migrated.responses[revision.removed_id]});
+  delete migrated.responses[revision.removed_id];
+  migrated.responses[revision.added_id] = blankResponse();
+  if (migrated.current_id === revision.removed_id) migrated.current_id = revision.added_id;
+  migrated.catalog_sha256 = catalog.metadata.catalog_sha256;
+  migrated.migrated_from_catalog = revision.previous_catalog_sha256;
+  return migrated;
+}
 
 function save() {
   session.updated_at = new Date().toISOString();
@@ -50,7 +73,8 @@ function payload() {
   tick();
   return {
     schema_version: 1, exported_at: new Date().toISOString(), study: catalog.metadata,
-    session: { id: session.id, participant_code: session.participant_code, prior_exposure: session.prior_exposure, set_size: session.set_size, started_at: session.started_at, updated_at: session.updated_at, current_id: session.current_id, storage_available: storageOkay, instructions_version: instructions.version },
+    session: { id: session.id, participant_code: session.participant_code, prior_exposure: session.prior_exposure, set_size: session.set_size, started_at: session.started_at, updated_at: session.updated_at, current_id: session.current_id, storage_available: storageOkay, instructions_version: instructions.version, migrated_from_catalog: session.migrated_from_catalog || null },
+    retired_responses: structuredClone(session.retired_responses || []),
     summary: summary(), samples: currentSamples().map(sample => ({ ...sample, response: structuredClone(responseFor(sample.id)) })),
   };
 }
@@ -100,10 +124,11 @@ function showStart() {
   }, 'primary');
   setup.append(el('div', { class: 'actions' }, [startButton, button('Import JSON backup', () => $('#import-file').click())]));
   if (session) setup.append(el('div', { class: 'actions' }, [button('Download saved answers', downloadJson, 'quiet'), button('Start a new participant', () => {
-    if (confirm('Start a separate participant session? Download your current JSON first. This clears the saved session in this browser, but not any files you have downloaded.')) { localStorage.removeItem(key); session = null; showStart(); }
+    if (confirm('Start a separate participant session? Download your current JSON first. This clears the saved session in this browser, but not any files you have downloaded.')) { localStorage.removeItem(key); for (const revision of catalog.metadata.selection_replacements || []) localStorage.removeItem(`agentvqa-human:${revision.previous_catalog_sha256}`); session = null; showStart(); }
   }, 'quiet')]));
   const guide = el('div', { class: 'panel soft instructions' }, [el('h2', { text: 'Before you begin' }), el('p', { text: 'Choose the single best option. Read the full question and any goal or action history. You may zoom images, inspect exact coordinate points, and replay videos.' }), el('ul', {}, [el('li', { text: 'Work independently. No AI tools, web searches, or answer keys.' }), el('li', { text: 'Answers are not graded on-screen. Take breaks and revisit any question.' }), el('li', { text: 'Add optional reasoning or flag unclear items. You may leave an item unanswered.' }), el('li', { text: 'Progress stays in this browser. Download a backup if you change devices.' }), el('li', { text: 'At the end, download PDF + JSON and email the JSON to the researcher. Nothing is submitted automatically.' })]), el('div', { class: 'actions' }, [button('Read full instructions', () => $('#help-dialog').showModal()), el('a', { class: 'button', href: 'instructions.pdf', download: '', text: 'Instructions PDF ↓' })]), el('p', { class: 'small-note', text: 'Participation is voluntary. Use an alias. Your responses and viewing-action counts are saved locally and included in your exports. Contact: advaitgupta@ymail.com.' })]);
-  start.append(el('div', { class: 'intro-grid' }, [setup, guide]), el('section', {class:'panel full-instructions'}, [el('h2',{text:'Full participant instructions'}), instructionsContent()]), el('footer', { class: 'footer', text: 'AgentVQA human study · Fixed version 1 · 23 source datasets · No answer key or correctness feedback is provided in this interface.' }));
+  guide.insertBefore(el('p', {text: 'Scroll through the page to check every image and all context. Images start fully fitted; after zooming in, pan or scroll to inspect the rest. Some coordinate choices are hard negatives just outside the target—check the exact black-dot center carefully.'}), guide.querySelector('.actions'));
+  start.append(el('div', { class: 'intro-grid' }, [setup, guide]), el('section', {class:'panel full-instructions'}, [el('h2',{text:'Full participant instructions'}), instructionsContent()]), el('footer', { class: 'footer', text: `AgentVQA human study · ${catalog.metadata.study_id} · 23 source datasets · No answer key or correctness feedback is provided in this interface.` }));
   main.append(start);
 }
 
@@ -219,13 +244,21 @@ function createImageViewer(sample, media, imageIndex, expanded = false) {
   }
   function applyScale(next, count = true) {
     const old = scale, centerX = (viewport.scrollLeft + viewport.clientWidth/2)/old, centerY = (viewport.scrollTop + viewport.clientHeight/2)/old;
-    scale = Math.max(.025, Math.min(8, next));
+    scale = Math.max(.00001, Math.min(8, next));
     stage.style.width = `${media.width * scale}px`; stage.style.height = `${media.height * scale}px`;
+    stage.style.visibility = 'visible';
     zoomLabel.textContent = `${Math.round(scale*100)}%`; drawMarkers();
     viewport.scrollLeft = centerX*scale - viewport.clientWidth/2; viewport.scrollTop = centerY*scale - viewport.clientHeight/2;
     if (count) { responseFor(sample.id).zoom_events += 1; save(); }
   }
-  function fit(count = true) { fitMode = true; applyScale(Math.min(1,(viewport.clientWidth || 600)/media.width), count); viewport.scrollLeft=0; viewport.scrollTop=0; }
+  function fit(count = true) {
+    if (!viewport.clientWidth) return;
+    const heightLimit = parseFloat(getComputedStyle(viewport).maxHeight);
+    const availableHeight = Number.isFinite(heightLimit) ? heightLimit : window.innerHeight * .7;
+    fitMode = true;
+    applyScale(Math.min(1, Math.max(1, viewport.clientWidth - 2) / media.width, Math.max(1, availableHeight - 2) / media.height), count);
+    viewport.scrollLeft = 0; viewport.scrollTop = 0;
+  }
   const toolbar = el('div',{class:'toolbar'},[button('−',()=>{fitMode=false;applyScale(scale/1.5);}),zoomLabel,button('+',()=>{fitMode=false;applyScale(scale*1.5);}),button('Fit',()=>fit()),button('100%',()=>{fitMode=false;applyScale(1);})]);
   toolbar.querySelectorAll('button')[0].setAttribute('aria-label','Zoom out'); toolbar.querySelectorAll('button')[1].setAttribute('aria-label','Zoom in');
   if (points.length) {
@@ -253,9 +286,10 @@ function createImageViewer(sample, media, imageIndex, expanded = false) {
   card.append(el('div',{class:'media-heading'},[el('span',{text:`Image ${imageIndex+1}`}),el('span',{class:'size',text:`${media.width} × ${media.height} pixels`})]),toolbar,viewport);
   card.append(el('p',{class:'media-hint',text: points.length ? 'The black dot’s center is the exact option coordinate. Letter bubbles may be offset. Zoom or hide markers to inspect a boundary.' : 'Use + / − to zoom; drag or scroll to pan. Original labels and grids are preserved.'}));
   const outside=points.filter(p=>!p.in_bounds); if(outside.length) card.append(el('p',{class:'media-hint',text:`Outside the image (not clamped): ${outside.map(p=>`${p.label} [${p.x}, ${p.y}]`).join('; ')}`}));
-  image.addEventListener('load',()=>fit(false));
+  image.addEventListener('load',()=>{if(fitMode)fit(false);});
   image.addEventListener('error',()=>{mediaError(sample.id,`Image ${imageIndex+1} failed to load`);card.append(el('div',{class:'media-error',text:'Image did not load. Reload the page or flag this item; do not answer based on missing media.'}));});
   const observer=new ResizeObserver(()=>{if(fitMode && viewport.clientWidth)fit(false);}); observer.observe(viewport); currentViewerCleanup.push(()=>observer.disconnect());
+  const resize=()=>{if(fitMode)fit(false);};window.addEventListener('resize',resize);currentViewerCleanup.push(()=>window.removeEventListener('resize',resize));
   let drag=null;
   viewport.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;drag={x:e.clientX,y:e.clientY,left:viewport.scrollLeft,top:viewport.scrollTop};viewport.setPointerCapture(e.pointerId);viewport.classList.add('dragging');});
   viewport.addEventListener('pointermove',e=>{if(drag){viewport.scrollLeft=drag.left+drag.x-e.clientX;viewport.scrollTop=drag.top+drag.y-e.clientY;}});
@@ -306,32 +340,50 @@ async function importResponses(file) {
   try{
     if(file.size>15000000)throw new Error('The file is too large for a response backup.');
     const data=JSON.parse(await file.text());
-    if(data.schema_version!==1||data.study?.catalog_sha256!==catalog.metadata.catalog_sha256)throw new Error('This backup belongs to a different study version.');
+    const revision=previousRevision(data.study?.catalog_sha256);
+    if(data.schema_version!==1||(data.study?.catalog_sha256!==catalog.metadata.catalog_sha256&&!revision))throw new Error('This backup belongs to a different study version.');
     if(![100,200].includes(data.session?.set_size)||!Array.isArray(data.samples))throw new Error('Invalid response file.');
     const expected=catalog.samples.filter(s=>data.session.set_size===200||s.in_100),ids=new Set();
-    const responses={};
+    const responses={},retired=[];
+    for(const item of data.retired_responses||[]){
+      const change=previousRevision(item.catalog_sha256);
+      if(!change||item.id!==change.removed_id)throw new Error('Unknown retired sample in backup.');
+      retired.push({id:item.id,catalog_sha256:item.catalog_sha256,response:cleanResponse(item.response||{},change.removed_option_count,item.id)});
+    }
     for(const item of data.samples){
-      const known=expected.find(s=>s.id===item.id);if(!known||ids.has(item.id))throw new Error('Unknown or duplicate sample ID in backup.');ids.add(item.id);
-      const raw=item.response||{},letters=known.options.map((_,i)=>String.fromCharCode(65+i));
-      if(raw.choice!==null&&!letters.includes(raw.choice))throw new Error(`Invalid answer for ${known.id}.`);
-      const response=blankResponse();Object.assign(response,{choice:raw.choice,comment:String(raw.comment||'').slice(0,10000),flagged:!!raw.flagged,first_viewed_at:typeof raw.first_viewed_at==='string'?raw.first_viewed_at:null,updated_at:typeof raw.updated_at==='string'?raw.updated_at:null});
-      for(const k of ['visits','visible_ms','zoom_events','video_events','choice_changes'])response[k]=Number.isFinite(raw[k])?Math.max(0,raw[k]):0;
-      response.media_errors=Array.isArray(raw.media_errors)?raw.media_errors.filter(e=>typeof e.message==='string').slice(0,50):[];
-      responses[item.id]=response;
+      const replaced=revision&&item.id===revision.removed_id;
+      const known=expected.find(s=>s.id===(replaced?revision.added_id:item.id));
+      if(!known||ids.has(known.id)||(revision&&item.id===revision.added_id))throw new Error('Unknown or duplicate sample ID in backup.');ids.add(known.id);
+      const response=cleanResponse(item.response||{},replaced?revision.removed_option_count:known.options.length,item.id);
+      if(replaced){retired.push({id:item.id,catalog_sha256:revision.previous_catalog_sha256,response});responses[known.id]=blankResponse();}
+      else responses[known.id]=response;
     }
     if(ids.size!==expected.length)throw new Error('The backup does not contain every selected question.');
     if(session&&!confirm('Replace the saved session in this browser with this backup? Download your current answers first.'))return;
-    session={id:String(data.session.id||crypto.randomUUID()),participant_code:String(data.session.participant_code||'Participant').slice(0,60),prior_exposure:['yes','no','unsure'].includes(data.session.prior_exposure)?data.session.prior_exposure:'unsure',set_size:data.session.set_size,started_at:data.session.started_at||new Date().toISOString(),responses,current_id:expected.some(s=>s.id===data.session.current_id)?data.session.current_id:expected[0].id,catalog_sha256:catalog.metadata.catalog_sha256};
-    save();alert('Backup imported. Review the participant settings and resume.');showStart();
+    const currentId=revision&&data.session.current_id===revision.removed_id?revision.added_id:data.session.current_id;
+    session={id:String(data.session.id||crypto.randomUUID()),participant_code:String(data.session.participant_code||'Participant').slice(0,60),prior_exposure:['yes','no','unsure'].includes(data.session.prior_exposure)?data.session.prior_exposure:'unsure',set_size:data.session.set_size,started_at:data.session.started_at||new Date().toISOString(),responses,current_id:expected.some(s=>s.id===currentId)?currentId:expected[0].id,catalog_sha256:catalog.metadata.catalog_sha256,retired_responses:retired,migrated_from_catalog:revision?.previous_catalog_sha256||data.session.migrated_from_catalog||null};
+    save();alert(revision?'Backup imported. The Five Guys item was replaced; its old response is archived in JSON. Other answers are preserved. Please answer the replacement question.':'Backup imported. Review the participant settings and resume.');showStart();
   }catch(error){alert(`Could not import backup: ${error.message}`);}
   $('#import-file').value='';
 }
 
 async function boot(){
-  [catalog,instructions]=await Promise.all(['catalog.json','instructions.json'].map(path=>fetch(path).then(r=>{if(!r.ok)throw new Error(`Cannot load ${path}: ${r.status}`);return r.json();})));
+  [catalog,instructions]=await Promise.all(['catalog.json','instructions.json'].map(path=>fetch(path,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Cannot load ${path}: ${r.status}`);return r.json();})));
   if(catalog.samples.length!==200||catalog.samples.filter(s=>s.in_100).length!==100)throw new Error('The fixed catalog is incomplete.');
   key=`agentvqa-human:${catalog.metadata.catalog_sha256}`;
-  try{const raw=localStorage.getItem(key);if(raw){const stored=JSON.parse(raw);if(stored.catalog_sha256===catalog.metadata.catalog_sha256&&[100,200].includes(stored.set_size)&&stored.responses)session=stored;}}
+  try{
+    const raw=localStorage.getItem(key);
+    if(raw){const stored=JSON.parse(raw);if(stored.catalog_sha256===catalog.metadata.catalog_sha256&&[100,200].includes(stored.set_size)&&stored.responses)session=stored;}
+    if(!session)for(const revision of catalog.metadata.selection_replacements||[]){
+      const previous=localStorage.getItem(`agentvqa-human:${revision.previous_catalog_sha256}`);
+      if(!previous)continue;
+      const stored=JSON.parse(previous);
+      if(stored.catalog_sha256!==revision.previous_catalog_sha256||![100,200].includes(stored.set_size)||!stored.responses)continue;
+      session=migrateSession(stored,revision);save();
+      if(storageOkay)alert('Your saved session was updated. The Five Guys item was replaced; its old response is archived in JSON. Other answers are preserved. Please answer the replacement question.');
+      break;
+    }
+  }
   catch{storageOkay=false;alert('Saved browser data could not be read. Import a JSON backup if you have one.');}
   $('#save-status').textContent=session?'Saved session found':'Progress stays on this device';
   $('#help-content').append(instructionsContent());
