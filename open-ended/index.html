@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+  <title>AgentVQA · Open-ended review</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="../human_eval/vendor/pdf-lib.min.js"></script>
+  <script defer src="../human_eval/vendor/fontkit.umd.min.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./">AgentVQA <span>Open-ended review</span></a><div class="top-actions"><span id="save-status" role="status">Loading answers…</span><button id="help" class="quiet">Instructions</button></div></header>
+  <div id="alert" class="alert" role="alert" hidden></div>
+  <main id="app"><p class="loading">Loading the saved model answers…</p></main>
+  <dialog id="help-dialog" class="dialog wide-dialog"><div class="dialog-heading"><h2>Review instructions</h2><button data-close="help-dialog">Close</button></div><div id="help-content"></div><button id="instructions-pdf">Download instructions PDF</button></dialog>
+  <dialog id="image-dialog" class="dialog image-dialog"><div class="dialog-heading"><h2 id="image-title">Image viewer</h2><button data-close="image-dialog">Close image</button></div><div id="image-content"></div></dialog>
+  <dialog id="export-dialog" class="dialog wide-dialog"><div class="dialog-heading"><h2>End & export</h2><button data-close="export-dialog">Return to review</button></div><div id="export-content"></div></dialog>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+  <noscript><p class="alert">Enable JavaScript to review answers. Judgments stay in your browser until you download or share them.</p></noscript>
+</body></html>
