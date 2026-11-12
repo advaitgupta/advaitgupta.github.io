@@ -1,0 +1,806 @@
+{
+  "dataset_revision": "29224a4605b0020fb5fca35a8ec93b6300699c85",
+  "catalog_sha256": "de5d7f2b12e2f6982ff31f41157d1d079421146b1d79dd8faa7b1018097a1be5",
+  "answers": {
+    "AitW:14": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "AitW:10": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "AitW:11": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "AitW:43": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "AitW:22": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "AitW:13": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "AitW:20": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "AitW:16": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "AitW:40": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "MONDAY:2": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "MONDAY:48": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MONDAY:36": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MONDAY:43": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MONDAY:38": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "MONDAY:1": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "MONDAY:6": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "MONDAY:49": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MONDAY:15": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "MONDAY:20": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Screenspot:21": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Screenspot:1": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Screenspot:40": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Screenspot:6": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot:20": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Screenspot:33": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot:12": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Screenspot:48": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot:2": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot:45": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Screenspot-Pro:39": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Screenspot-Pro:28": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot-Pro:16": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot-Pro:48": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Screenspot-Pro:2": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Screenspot-Pro:9": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Screenspot-Pro:32": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot-Pro:7": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Screenspot-Pro:37": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Screenspot-Pro:44": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Atari:46": {
+      "answer": "B",
+      "source_answer": 1
+    },
+    "Atari:24": {
+      "answer": "B",
+      "source_answer": 1
+    },
+    "Atari:34": {
+      "answer": "B",
+      "source_answer": 1
+    },
+    "Atari:6": {
+      "answer": "D",
+      "source_answer": 3
+    },
+    "Atari:19": {
+      "answer": "A",
+      "source_answer": 0
+    },
+    "Atari:30": {
+      "answer": "B",
+      "source_answer": 1
+    },
+    "Atari:9": {
+      "answer": "D",
+      "source_answer": 3
+    },
+    "Atari:2": {
+      "answer": "B",
+      "source_answer": 1
+    },
+    "Atari:39": {
+      "answer": "A",
+      "source_answer": 0
+    },
+    "Atari:36": {
+      "answer": "D",
+      "source_answer": 3
+    },
+    "GameQA:45": {
+      "answer": "F",
+      "source_answer": "F"
+    },
+    "GameQA:25": {
+      "answer": "H",
+      "source_answer": "H"
+    },
+    "GameQA:0": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "GameQA:9": {
+      "answer": "F",
+      "source_answer": "F"
+    },
+    "GameQA:39": {
+      "answer": "E",
+      "source_answer": "E"
+    },
+    "GameQA:10": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "GameQA:15": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "GameQA:32": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "GameQA:11": {
+      "answer": "H",
+      "source_answer": "H"
+    },
+    "GameQA:44": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MarioQA:4": {
+      "answer": "B",
+      "source_answer": "castle"
+    },
+    "MarioQA:5": {
+      "answer": "A",
+      "source_answer": "2"
+    },
+    "MarioQA:27": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MarioQA:17": {
+      "answer": "A",
+      "source_answer": "by stomping"
+    },
+    "MarioQA:48": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MarioQA:11": {
+      "answer": "A",
+      "source_answer": "ground in castle"
+    },
+    "MarioQA:35": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "MarioQA:10": {
+      "answer": "A",
+      "source_answer": "3"
+    },
+    "MarioQA:21": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "MarioQA:45": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VideoGameBunny:9": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VideoGameBunny:34": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "VideoGameBunny:49": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VideoGameBunny:42": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "VideoGameBunny:37": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "VideoGameBunny:32": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "VideoGameBunny:40": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "VideoGameBunny:14": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VideoGameBunny:5": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "VideoGameBunny:29": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "EgoPlan-Bench:17": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "EgoPlan-Bench:33": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "EgoPlan-Bench:0": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "EgoPlan-Bench:19": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "EgoPlan-Bench:31": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "EgoPlan-Bench:9": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "EgoPlan-Bench:21": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "EgoPlan-Bench:23": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "OpenEQA:14": {
+      "answer": "B",
+      "source_answer": "turn on the table lamp"
+    },
+    "OpenEQA:34": {
+      "answer": "C",
+      "source_answer": "None of the above"
+    },
+    "OpenEQA:35": {
+      "answer": "A",
+      "source_answer": "None of the above"
+    },
+    "OpenEQA:2": {
+      "answer": "B",
+      "source_answer": "None of the above"
+    },
+    "OpenEQA:6": {
+      "answer": "A",
+      "source_answer": "a box"
+    },
+    "OpenEQA:37": {
+      "answer": "B",
+      "source_answer": "None of the above"
+    },
+    "OpenEQA:32": {
+      "answer": "B",
+      "source_answer": "None of the above"
+    },
+    "OpenEQA:13": {
+      "answer": "A",
+      "source_answer": "maroon"
+    },
+    "Perception-Test:30": {
+      "answer": "A",
+      "source_answer": "Some were correctly matched, some incorrectly."
+    },
+    "Perception-Test:7": {
+      "answer": "B",
+      "source_answer": "moving"
+    },
+    "Perception-Test:9": {
+      "answer": "C",
+      "source_answer": "6"
+    },
+    "Perception-Test:21": {
+      "answer": "A",
+      "source_answer": "None of the above"
+    },
+    "Perception-Test:22": {
+      "answer": "A",
+      "source_answer": "a tea"
+    },
+    "Perception-Test:10": {
+      "answer": "A",
+      "source_answer": "moving"
+    },
+    "Perception-Test:36": {
+      "answer": "C",
+      "source_answer": "5"
+    },
+    "Perception-Test:15": {
+      "answer": "B",
+      "source_answer": "moving"
+    },
+    "VidEgoThink:32": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "VidEgoThink:1": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "VidEgoThink:39": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VidEgoThink:19": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "VidEgoThink:25": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "VidEgoThink:16": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "VidEgoThink:3": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "VidEgoThink:28": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "VSI-Bench:4": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "VSI-Bench:9": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "VSI-Bench:19": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "VSI-Bench:3": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VSI-Bench:8": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "VSI-Bench:6": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VSI-Bench:29": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "VSI-Bench:12": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ERQA:17": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "ERQA:2": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ERQA:3": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ERQA:18": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "ERQA:33": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "ERQA:6": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "ERQA:31": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ERQA:38": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ManipBench:9": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ManipBench:33": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "ManipBench:32": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "ManipBench:21": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ManipBench:8": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "ManipBench:14": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "ManipBench:39": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "ManipBench:22": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Robo2VLM:35": {
+      "answer": "E",
+      "source_answer": "E"
+    },
+    "Robo2VLM:2": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Robo2VLM:12": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Robo2VLM:20": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Robo2VLM:33": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Robo2VLM:36": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Robo2VLM:6": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Robo2VLM:13": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Roborefit:3": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Roborefit:25": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Roborefit:18": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Roborefit:7": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Roborefit:32": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Roborefit:13": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Roborefit:29": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Roborefit:24": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Share-Robot:37": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Share-Robot:12": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Share-Robot:39": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Share-Robot:5": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Share-Robot:23": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Share-Robot:18": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Share-Robot:33": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Share-Robot:15": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "3DSRBench:11": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "3DSRBench:2": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "3DSRBench:21": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "3DSRBench:5": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "3DSRBench:12": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "3DSRBench:35": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "3DSRBench:32": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "3DSRBench:22": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "EmbSpatial-Bench:16": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "EmbSpatial-Bench:20": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "EmbSpatial-Bench:22": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "EmbSpatial-Bench:34": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "EmbSpatial-Bench:9": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "EmbSpatial-Bench:36": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "EmbSpatial-Bench:39": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "EmbSpatial-Bench:35": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "OmniSpatial:38": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "OmniSpatial:36": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "OmniSpatial:13": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "OmniSpatial:29": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "OmniSpatial:8": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "OmniSpatial:39": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "OmniSpatial:34": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "OmniSpatial:37": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "SpaCE-10:15": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "SpaCE-10:39": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "SpaCE-10:17": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "SpaCE-10:18": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "SpaCE-10:29": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "SpaCE-10:2": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "SpaCE-10:38": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "SpaCE-10:22": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Spatial-MM:18": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Spatial-MM:1": {
+      "answer": "D",
+      "source_answer": "D"
+    },
+    "Spatial-MM:19": {
+      "answer": "C",
+      "source_answer": "C"
+    },
+    "Spatial-MM:20": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Spatial-MM:9": {
+      "answer": "A",
+      "source_answer": "A"
+    },
+    "Spatial-MM:21": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Spatial-MM:26": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "Spatial-MM:37": {
+      "answer": "B",
+      "source_answer": "B"
+    },
+    "AitW:7": {
+      "answer": "B",
+      "source_answer": "B"
+    }
+  }
+}
