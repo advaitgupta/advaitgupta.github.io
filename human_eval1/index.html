@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Human evaluation of AgentVQA. Fixed, balanced question sets with private local progress and downloadable responses.">
+  <title>AgentVQA · Human evaluation 1</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script defer src="../human_eval/vendor/pdf-lib.min.js"></script>
+  <script defer src="../human_eval/vendor/fontkit.umd.min.js"></script>
+  <script type="module" src="app.js?v=2"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">AgentVQA <span>Human evaluation 1</span></a>
+    <div class="top-actions"><span id="save-status" role="status">Loading study…</span><button id="help-button" class="quiet">Instructions</button></div>
+  </header>
+  <div id="alert" class="alert" role="alert" hidden></div>
+  <main id="app"><p class="loading">Loading the fixed question set…</p></main>
+  <dialog id="help-dialog" class="dialog wide-dialog"><div class="dialog-heading"><h2>Participant instructions</h2><button class="quiet" data-close="help-dialog" aria-label="Close instructions">Close ✕</button></div><div id="help-content"></div><a href="instructions.pdf" download class="button">Download instructions PDF</a></dialog>
+  <dialog id="finish-dialog" class="dialog"><div class="dialog-heading"><h2>End &amp; export</h2><button class="quiet" data-close="finish-dialog" aria-label="Close export dialog">Close ✕</button></div><div id="finish-content"></div></dialog>
+  <dialog id="image-dialog" class="dialog image-dialog"><div class="dialog-heading"><h2 id="image-title">Image viewer</h2><button class="quiet" data-close="image-dialog" aria-label="Close image viewer">Close ✕</button></div><div id="image-dialog-content"></div></dialog>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+  <noscript><p class="alert">JavaScript is required. Your answers stay in this browser until you export or share them.</p></noscript>
+</body>
+</html>
